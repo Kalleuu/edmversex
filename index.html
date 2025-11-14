@@ -14,6 +14,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="format-detection" content="telephone=no" />
+  <meta name="color-scheme" content="dark" />
 
   <!-- SEO basics -->
   <meta
@@ -52,9 +53,19 @@
   <!-- Google AdSense (global) -->
   <script
     async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4201977277980522"
+    src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-4201977277980522"
     crossorigin="anonymous"
   ></script>
+
+  <!-- Google Analytics -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1KFLYZ78XS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1KFLYZ78XS');
+  </script>
 
   <!-- Tailwind via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -124,6 +135,16 @@
       pointer-events: auto;
       transform: scale(1);
     }
+
+    .content-fade {
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+    .content-fade.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 
   <!-- Structured data -->
@@ -159,7 +180,7 @@
 
   <!-- App header -->
   <header class="sticky top-0 z-40 backdrop-blur-xl bg-slate-950/80 border-b border-slate-800/70">
-    <nav class="mx-auto max-w-6xl px-4 py-3 flex items-center gap-3">
+    <nav class="mx-auto max-w-6xl px-4 py-3 flex items-center gap-3" aria-label="Main navigation">
       <button
         id="menu-toggle"
         class="h-10 w-10 rounded-2xl bg-slate-900/80 border border-slate-700/80 flex items-center justify-center"
@@ -206,7 +227,7 @@
       <button
         id="search-mobile"
         class="md:hidden ml-auto h-9 w-9 rounded-full bg-slate-900/80 border border-slate-700/70 flex items-center justify-center"
-        aria-label="Open search"
+        aria-label="Focus search"
       >
         🔎
       </button>
@@ -298,7 +319,7 @@
     class="mx-auto max-w-6xl px-4 pt-4 pb-20 md:pb-16 space-y-5 lg:space-y-0"
   >
     <!-- Left side: feed -->
-    <section class="space-y-5 lg:space-y-6">
+    <section class="space-y-5 lg:space-y-6 content-fade" id="feed-column">
 
       <!-- Hero section with swipe cards -->
       <section class="rounded-3xl bg-slate-950/90 border border-slate-800 shadow-edmSoft overflow-hidden">
@@ -310,7 +331,7 @@
             New tracks, sets and headlines in a continuous flow.
           </h1>
           <p class="mt-2 text-sm text-slate-300">
-            Swipe featured drops or scroll for the full EDM feed with curated content and automatic commercial placements.
+            Swipe featured drops or scroll for the full EDM feed that mixes music discovery with automatic commercial placements.
           </p>
         </div>
 
@@ -391,7 +412,7 @@
                   Promote a label, release or festival headline.
                 </h2>
                 <p class="mt-1 text-[11px] text-slate-200">
-                  Reach an EDM focused audience that looks for tracks, mixes and live shows every day.
+                  Reach an EDM focused audience that checks new content and live shows every day.
                 </p>
               </header>
               <footer class="mt-3 flex items-center justify-between text-[11px]">
@@ -423,7 +444,7 @@
                 Curated releases and demo highlights.
               </h2>
               <p class="mt-1 text-[11px] text-slate-400">
-                Play opens a SoundCloud search, which keeps links flexible and up to date.
+                Play opens a SoundCloud search and keeps link targets flexible and current.
               </p>
             </div>
             <button
@@ -497,7 +518,7 @@
                 Big room drops, techno elements and vocal hooks that suit main stage moments.
               </p>
               <p class="mt-2 text-[11px] text-slate-400">
-                Based on current festival rotations and new artists that move fast.
+                Based on current festival rotations and new artists that rise fast.
               </p>
               <a
                 href="https://open.spotify.com/search/peak%20time%20festival%20edm"
@@ -514,7 +535,7 @@
     </section>
 
     <!-- Right side: news, shows, extra -->
-    <aside class="space-y-5 lg:space-y-6" aria-label="News and extra features">
+    <aside class="space-y-5 lg:space-y-6 content-fade" id="side-column" aria-label="News and extra features">
 
       <!-- News block with RSS -->
       <section class="rounded-3xl bg-slate-950/92 border border-slate-800/80 p-4 sm:p-5">
@@ -527,7 +548,7 @@
               Articles from EDM and artist sources.
             </h2>
             <p class="mt-1 text-[11px] text-slate-400">
-              Feed uses selected RSS sources and updates in the browser.
+              Feed uses selected RSS sources and updates inside the browser.
             </p>
           </div>
           <button
@@ -644,7 +665,7 @@
     </aside>
   </main>
 
-  <!-- Desktop footer (normal flow, not fixed) -->
+  <!-- Desktop footer -->
   <footer class="border-t border-slate-800 bg-slate-950/95 mt-6">
     <div class="mx-auto max-w-6xl px-4 py-3 flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-[11px] text-slate-500">
       <p>
@@ -666,7 +687,7 @@
     </div>
   </footer>
 
-  <!-- Mobile sticky nav (small, without big ad) -->
+  <!-- Mobile sticky nav -->
   <nav
     class="fixed bottom-0 inset-x-0 z-40 md:hidden bg-slate-950/95 border-t border-slate-800/90 backdrop-blur-xl"
     aria-label="Bottom navigation"
@@ -758,6 +779,8 @@
       var menuClose = document.getElementById('menu-close');
       var mobileMenu = document.getElementById('mobile-menu');
       var searchMobile = document.getElementById('search-mobile');
+      var feedColumn = document.getElementById('feed-column');
+      var sideColumn = document.getElementById('side-column');
 
       // Demo tracks
       var demoTracks = [
@@ -799,7 +822,7 @@
         }
       ];
 
-      // RSS sources (you can replace URLs with exact artist feeds if needed)
+      // RSS sources
       var rssSources = [
         {
           name: 'Armada Music',
@@ -815,7 +838,7 @@
         }
       ];
 
-      // Upcoming shows data: links point to official or trusted pages
+      // Upcoming shows
       var showsData = [
         {
           artist: 'Armin van Buuren',
@@ -938,7 +961,7 @@
         return arr;
       }
 
-      // RSS fetch through AllOrigins to avoid CORS problems
+      // RSS fetch through AllOrigins
       function fetchRssFeed(feed) {
         var apiUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(feed.url);
         return fetch(apiUrl)
@@ -1010,7 +1033,6 @@
           results.forEach(function (arr) {
             allItems = allItems.concat(arr);
           });
-          // Simple shuffle for variety
           allItems = shuffleArray(allItems).slice(0, 6);
           renderNews(allItems);
         });
@@ -1090,6 +1112,12 @@
             '. Newsletter handling will be connected and your interest is already registered.';
           newsletterMessage.classList.remove('hidden');
           email.value = '';
+          try {
+            gtag('event', 'newsletter_signup', {
+              event_category: 'engagement',
+              event_label: 'footer_newsletter'
+            });
+          } catch (err) {}
         });
       }
 
@@ -1154,6 +1182,19 @@
         }
       }
 
+      function initFadeIn() {
+        if (feedColumn) {
+          setTimeout(function () {
+            feedColumn.classList.add('visible');
+          }, 80);
+        }
+        if (sideColumn) {
+          setTimeout(function () {
+            sideColumn.classList.add('visible');
+          }, 160);
+        }
+      }
+
       // Initial render
       renderTracks(demoTracks);
       renderShows(showsData.slice(0, 5));
@@ -1164,6 +1205,7 @@
       initMenu();
       initSearchMobile();
       initFeedControls();
+      initFadeIn();
     })();
   </script>
 </body>
