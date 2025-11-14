@@ -1,0 +1,54 @@
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /admin/
+Disallow: /api/debug/
+
+# Sitemap
+Sitemap: https://edmversex.com/sitemap.xml
+
+# Crawl-delay (optional, keeps server light)
+Crawl-delay: 5
+
+# Special rules for Google
+User-agent: Googlebot
+Allow: *
+Crawl-delay: 2
+
+User-agent: Googlebot-News
+Allow: /
+Disallow: /private/
+Crawl-delay: 2
+
+User-agent: Googlebot-Image
+Allow: /
+
+# Ads.txt must be crawlable
+User-agent: AdsBot-Google
+Allow: /ads.txt
+
+# Cloudflare Pages safe-area
+User-agent: Cloudflare-Health-Check
+Allow: /
+
+# Block known bad bots
+User-agent: AhrefsBot
+Disallow: /
+User-agent: SemrushBot
+Disallow: /
+User-agent: MJ12bot
+Disallow: /
+User-agent: BLEXBot
+Disallow: /
+
+# Avoid duplicate content scanning by AI scrapers
+User-agent: CCBot
+Disallow: /
+User-agent: GPTBot
+Disallow: /
+User-agent: ChatGPT-User
+Disallow: /
+User-agent: DeepSeekBot
+Disallow: /
+User-agent: Claude-Web
+Disallow: /
