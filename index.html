@@ -110,7 +110,6 @@
       scroll-snap-align: start;
     }
 
-    /* Simple mobile menu animation */
     #mobile-menu {
       transform-origin: top right;
       transition: opacity 0.18s ease, transform 0.18s ease;
@@ -256,6 +255,9 @@
       <a href="#news-feed" class="px-4 py-2 rounded-full bg-slate-900/90 border border-slate-700/80">
         News
       </a>
+      <a href="#shows" class="px-4 py-2 rounded-full bg-slate-900/90 border border-slate-700/80">
+        Shows
+      </a>
       <a href="/privacy.html" class="px-4 py-2 rounded-full bg-slate-900/90 border border-slate-700/80">
         Privacy
       </a>
@@ -282,7 +284,7 @@
         href="https://soundcloud.com/search?q=NovaPulse%20future%20rave"
         target="_blank"
         rel="noopener noreferrer"
-        class="h-8 px-3 rounded-full bg-emerald-500 text-slate-950 text-[11px] font-semibold flex items-center justify-center"
+        class="hidden sm:flex h-8 px-3 rounded-full bg-emerald-500 text-slate-950 text-[11px] font-semibold items-center justify-center"
       >
         Listen
       </a>
@@ -293,7 +295,7 @@
   <main
     id="main"
     data-layout="grid"
-    class="mx-auto max-w-6xl px-4 pt-4 pb-28 space-y-5 lg:space-y-0"
+    class="mx-auto max-w-6xl px-4 pt-4 pb-20 md:pb-16 space-y-5 lg:space-y-0"
   >
     <!-- Left side: feed -->
     <section class="space-y-5 lg:space-y-6">
@@ -305,10 +307,10 @@
             Today at EDM VERSEX
           </p>
           <h1 class="mt-1 text-xl sm:text-2xl font-semibold">
-            New tracks, sets and headlines in one continuous feed.
+            New tracks, sets and headlines in a continuous flow.
           </h1>
           <p class="mt-2 text-sm text-slate-300">
-            Swipe through featured drops or scroll down for the full EDM feed with curated content and monetised placements.
+            Swipe featured drops or scroll for the full EDM feed with curated content and automatic commercial placements.
           </p>
         </div>
 
@@ -329,7 +331,7 @@
                   Midnight Skyline future rave edit
                 </h2>
                 <p class="mt-1 text-[11px] text-slate-200">
-                  NovaPulse 128 BPM festival ready cut for 2030 floors.
+                  NovaPulse 128 BPM festival ready cut that focuses on energy and atmosphere.
                 </p>
               </header>
               <footer class="mt-3 flex items-center justify-between text-[11px]">
@@ -359,7 +361,7 @@
                   Sunrise melodic techno journey
                 </h2>
                 <p class="mt-1 text-[11px] text-slate-200">
-                  Kinetic Dunes live recording for long headphones sessions.
+                  Kinetic Dunes live recording for long headphone sessions and slow burn dance floors.
                 </p>
               </header>
               <footer class="mt-3 flex items-center justify-between text-[11px]">
@@ -389,7 +391,7 @@
                   Promote a label, release or festival headline.
                 </h2>
                 <p class="mt-1 text-[11px] text-slate-200">
-                  Reach a global EDM crowd that comes for music and returns for discovery.
+                  Reach an EDM focused audience that looks for tracks, mixes and live shows every day.
                 </p>
               </header>
               <footer class="mt-3 flex items-center justify-between text-[11px]">
@@ -421,7 +423,7 @@
                 Curated releases and demo highlights.
               </h2>
               <p class="mt-1 text-[11px] text-slate-400">
-                Play buttons open a SoundCloud search so every card leads to audio.
+                Play opens a SoundCloud search, which keeps links flexible and up to date.
               </p>
             </div>
             <button
@@ -461,7 +463,7 @@
                 Editor picks
               </p>
               <h2 class="text-sm sm:text-base font-semibold">
-                Playlists and DJ sets that work on floors and streams.
+                Playlists and DJ sets for floors and home listening.
               </h2>
             </div>
           </header>
@@ -472,10 +474,10 @@
                 Deep city afterhours
               </h3>
               <p class="mt-1 text-[12px] text-slate-300">
-                Slow burning melodic cuts for late hours and focused listening.
+                Slow melodic cuts that focus on mood and groove when the night gets quiet.
               </p>
               <p class="mt-2 text-[11px] text-slate-400">
-                Updated several times each week with underground selections.
+                Updated several times each week with underground picks.
               </p>
               <a
                 href="https://open.spotify.com/search/deep%20city%20afterhours"
@@ -492,10 +494,10 @@
                 Peak time festival energy
               </h3>
               <p class="mt-1 text-[12px] text-slate-300">
-                Big room drops, techno stabs and vocal hooks tuned for crowd moments.
+                Big room drops, techno elements and vocal hooks that suit main stage moments.
               </p>
               <p class="mt-2 text-[11px] text-slate-400">
-                Based on current festival rotation and new artists that rise fast.
+                Based on current festival rotations and new artists that move fast.
               </p>
               <a
                 href="https://open.spotify.com/search/peak%20time%20festival%20edm"
@@ -511,10 +513,10 @@
       </section>
     </section>
 
-    <!-- Right side: news, charts, monetisation -->
+    <!-- Right side: news, shows, extra -->
     <aside class="space-y-5 lg:space-y-6" aria-label="News and extra features">
 
-      <!-- News block -->
+      <!-- News block with RSS -->
       <section class="rounded-3xl bg-slate-950/92 border border-slate-800/80 p-4 sm:p-5">
         <header class="flex items-center justify-between gap-2 mb-3">
           <div>
@@ -522,10 +524,10 @@
               EDM headlines
             </p>
             <h2 class="text-sm font-semibold">
-              Stories from Armin van Buuren, Tiesto, Martin Garrix and more.
+              Articles from EDM and artist sources.
             </h2>
             <p class="mt-1 text-[11px] text-slate-400">
-              Links go straight to trusted news and artist sources.
+              Feed uses selected RSS sources and updates in the browser.
             </p>
           </div>
           <button
@@ -557,47 +559,49 @@
         </div>
       </section>
 
-      <!-- Genre trends -->
-      <section class="rounded-3xl bg-slate-950/90 border border-slate-800/80 p-4 sm:p-5">
-        <header class="mb-2">
-          <p class="text-[11px] uppercase tracking-[0.22em] text-sky-400">
-            Genre trends
-          </p>
-          <h2 class="text-sm font-semibold">
-            What the community listens to this week.
-          </h2>
+      <!-- Upcoming shows -->
+      <section
+        id="shows"
+        class="rounded-3xl bg-slate-950/90 border border-slate-800/80 p-4 sm:p-5"
+      >
+        <header class="flex items-center justify-between gap-2 mb-3">
+          <div>
+            <p class="text-[11px] uppercase tracking-[0.22em] text-sky-400">
+              Upcoming shows
+            </p>
+            <h2 class="text-sm font-semibold">
+              Links to tour dates for EDM, house and trance artists.
+            </h2>
+            <p class="mt-1 text-[11px] text-slate-400">
+              Links point to official or trusted pages where dates stay current.
+            </p>
+          </div>
+          <button
+            type="button"
+            id="shows-refresh"
+            class="inline-flex items-center gap-1 text-[11px] px-3 py-1.5 rounded-full bg-slate-900 border border-slate-700/80"
+          >
+            Refresh list
+          </button>
         </header>
-        <div class="flex flex-wrap gap-2">
-          <button
-            type="button"
-            class="px-3 py-1.5 rounded-full bg-slate-900/90 border border-emerald-500/70 text-[11px] text-emerald-300"
-          >
-            Future rave
-          </button>
-          <button
-            type="button"
-            class="px-3 py-1.5 rounded-full bg-slate-900/90 border border-slate-700/80 text-[11px]"
-          >
-            Melodic techno
-          </button>
-          <button
-            type="button"
-            class="px-3 py-1.5 rounded-full bg-slate-900/90 border border-slate-700/80 text-[11px]"
-          >
-            Tech house
-          </button>
-          <button
-            type="button"
-            class="px-3 py-1.5 rounded-full bg-slate-900/90 border border-slate-700/80 text-[11px]"
-          >
-            Hard dance
-          </button>
-          <button
-            type="button"
-            class="px-3 py-1.5 rounded-full bg-slate-900/90 border border-slate-700/80 text-[11px]"
-          >
-            Drum and bass
-          </button>
+
+        <div id="shows-list" class="space-y-3">
+          <!-- Filled by JS -->
+        </div>
+
+        <!-- Small ad in shows section -->
+        <div class="mt-3 rounded-2xl border border-slate-800 bg-slate-950/90 p-2">
+          <ins
+            class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4201977277980522"
+            data-ad-slot="1000000005"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          ></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
         </div>
       </section>
 
@@ -608,7 +612,7 @@
             Creator newsletter
           </p>
           <h2 class="mt-1 text-sm font-semibold">
-            Weekly email with tools, tips and release opportunities.
+            Weekly mail with tools, tips and release opportunities.
           </h2>
         </header>
         <form id="newsletter-form" class="mt-3 space-y-2" aria-label="Newsletter signup form">
@@ -629,7 +633,7 @@
             Join newsletter
           </button>
           <p class="text-[10px] mt-1 text-slate-900/90">
-            Short emails that focus on real value for music makers and DJs. One click unsubscribe at any moment.
+            Short messages that focus on real value for music makers and DJs. One click unsubscribe is always available.
           </p>
           <p
             id="newsletter-message"
@@ -640,70 +644,52 @@
     </aside>
   </main>
 
-  <!-- Sticky bottom dock with ad and navigation -->
-  <footer class="fixed bottom-0 inset-x-0 z-40">
-    <div class="mx-auto max-w-6xl px-4 pb-[env(safe-area-inset-bottom)]">
-      <div class="rounded-3xl bg-slate-950/95 border border-slate-800/90 backdrop-blur-xl shadow-edmSoft px-3 py-2">
-        <div class="flex items-center gap-3">
-          <!-- Small responsive ad -->
-          <div class="flex-1 min-w-0">
-            <ins
-              class="adsbygoogle"
-              style="display:block"
-              data-ad-client="ca-pub-4201977277980522"
-              data-ad-slot="1000000004"
-              data-ad-format="auto"
-              data-full-width-responsive="true"
-            ></ins>
-            <script>
-              (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-          </div>
-
-          <!-- Dock nav -->
-          <nav class="flex items-center gap-1.5 text-[11px]" aria-label="Quick navigation">
-            <a
-              href="#main"
-              class="inline-flex flex-col items-center px-2 py-1 rounded-2xl bg-slate-900 border border-slate-700/80"
-            >
-              <span aria-hidden="true">🏠</span>
-              <span class="text-[9px] mt-0.5">Feed</span>
-            </a>
-            <a
-              href="#track-feed"
-              class="inline-flex flex-col items-center px-2 py-1 rounded-2xl bg-slate-900 border border-slate-700/80"
-            >
-              <span aria-hidden="true">🎵</span>
-              <span class="text-[9px] mt-0.5">Tracks</span>
-            </a>
-            <a
-              href="#news-feed"
-              class="inline-flex flex-col items-center px-2 py-1 rounded-2xl bg-slate-900 border border-slate-700/80"
-            >
-              <span aria-hidden="true">📰</span>
-              <span class="text-[9px] mt-0.5">News</span>
-            </a>
-          </nav>
-        </div>
-        <div class="mt-1 flex justify-between items-center text-[9px] text-slate-500">
-          <p>
-            &copy;
-            <span id="year"></span>
-            EDM VERSEX
-          </p>
-          <div class="flex gap-2">
-            <a href="/privacy.html" class="underline">
-              Privacy
-            </a>
-            <span aria-hidden="true">·</span>
-            <a href="/cookies.html" class="underline">
-              Cookies
-            </a>
-          </div>
-        </div>
+  <!-- Desktop footer (normal flow, not fixed) -->
+  <footer class="border-t border-slate-800 bg-slate-950/95 mt-6">
+    <div class="mx-auto max-w-6xl px-4 py-3 flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-[11px] text-slate-500">
+      <p>
+        &copy;
+        <span id="year"></span>
+        EDM VERSEX
+      </p>
+      <div class="flex flex-wrap items-center gap-3">
+        <a href="/privacy.html" class="underline">
+          Privacy
+        </a>
+        <a href="/cookies.html" class="underline">
+          Cookies
+        </a>
+        <span>
+          Created for fans, DJs and producers who like simple daily discovery.
+        </span>
       </div>
     </div>
   </footer>
+
+  <!-- Mobile sticky nav (small, without big ad) -->
+  <nav
+    class="fixed bottom-0 inset-x-0 z-40 md:hidden bg-slate-950/95 border-t border-slate-800/90 backdrop-blur-xl"
+    aria-label="Bottom navigation"
+  >
+    <div class="mx-auto max-w-6xl px-4 py-1.5 flex items-center justify-around text-[11px]">
+      <a href="#main" class="flex flex-col items-center">
+        <span aria-hidden="true">🏠</span>
+        <span class="text-[9px] mt-0.5">Feed</span>
+      </a>
+      <a href="#track-feed" class="flex flex-col items-center">
+        <span aria-hidden="true">🎵</span>
+        <span class="text-[9px] mt-0.5">Tracks</span>
+      </a>
+      <a href="#news-feed" class="flex flex-col items-center">
+        <span aria-hidden="true">📰</span>
+        <span class="text-[9px] mt-0.5">News</span>
+      </a>
+      <a href="#shows" class="flex flex-col items-center">
+        <span aria-hidden="true">🎫</span>
+        <span class="text-[9px] mt-0.5">Shows</span>
+      </a>
+    </div>
+  </nav>
 
   <!-- Cookie banner -->
   <section
@@ -715,10 +701,10 @@
         Cookies and personalisation
       </p>
       <p class="text-[11px] text-slate-200">
-        This site uses cookies for analytics, content personalisation and advertising in line with European regulation. You can change your choice at any time in your browser settings.
+        This site uses cookies for analytics, content personalisation and advertising that follows European regulation. You can change your choice in browser settings at any time.
       </p>
       <p class="text-[11px] text-slate-300">
-        Read more in our
+        Read more in the
         <a href="/cookies.html" class="underline text-sky-400">Cookie Policy</a>
         and
         <a href="/privacy.html" class="underline text-sky-400">Privacy Policy</a>.
@@ -758,8 +744,10 @@
 
       var trackFeed = document.getElementById('track-feed');
       var newsFeed = document.getElementById('news-feed');
+      var showsList = document.getElementById('shows-list');
       var tracksRefresh = document.getElementById('tracks-refresh');
       var newsRefresh = document.getElementById('news-refresh');
+      var showsRefresh = document.getElementById('shows-refresh');
       var yearSpan = document.getElementById('year');
       var cookieBanner = document.getElementById('cookie-banner');
       var cookieAccept = document.getElementById('cookie-accept-all');
@@ -771,6 +759,7 @@
       var mobileMenu = document.getElementById('mobile-menu');
       var searchMobile = document.getElementById('search-mobile');
 
+      // Demo tracks
       var demoTracks = [
         {
           title: 'Solar Echoes',
@@ -810,63 +799,71 @@
         }
       ];
 
-      // Curated EDM news and artist stories linking to real sources
-      var edmNews = [
+      // RSS sources (you can replace URLs with exact artist feeds if needed)
+      var rssSources = [
         {
-          title: "Armin van Buuren announces first acoustic album Piano",
-          source: "Armada Music",
-          timeAgo: "October 2025",
-          summary:
-            "Fifteen track self composed album that highlights the writer side behind decades of trance and festival main stages.",
-          link: "https://news.armadamusic.com/releases/"
+          name: 'Armada Music',
+          url: 'https://www.armadamusic.com/rss/news'
         },
         {
-          title: "Armin van Buuren and KI/KI present AMF anthem Put Your Bassline",
-          source: "Armin van Buuren official",
-          timeAgo: "Autumn 2025",
-          summary:
-            "A hard hitting AMF anthem that blends trance heritage with modern warehouse energy.",
-          link: "https://www.arminvanbuuren.com/"
+          name: 'EDM House Network',
+          url: 'https://edmhousenetwork.com/feed/'
         },
         {
-          title: "Martin Garrix recovers after sudden surgery and pauses shows",
-          source: "EDM Tunes",
-          timeAgo: "November 2025",
-          summary:
-            "Superstar DJ cancels a weekend of shows after emergency appendicitis surgery and focuses on safe recovery.",
-          link: "https://www.edmtunes.com/2025/11/martin-garrix-appendicitis-surgery/"
+          name: 'EDM Tunes',
+          url: 'https://www.edmtunes.com/feed/'
+        }
+      ];
+
+      // Upcoming shows data: links point to official or trusted pages
+      var showsData = [
+        {
+          artist: 'Armin van Buuren',
+          genre: 'Trance',
+          info: 'Official tour dates and festival shows',
+          url: 'https://www.arminvanbuuren.com/tour-dates/'
         },
         {
-          title: "DJ Mag Top 100 DJs 2025 results highlight veteran and rising names",
-          source: "EDM Tunes",
-          timeAgo: "October 2025",
-          summary:
-            "Latest edition of the public vote ranking reflects fan energy across EDM with headline wins and movement for new faces.",
-          link: "https://www.edmtunes.com/2025/10/dj-mag-top-100-djs-award-results-of-2025-revealed/"
+          artist: 'Tiesto',
+          genre: 'EDM',
+          info: 'ClubLife and festival schedule',
+          url: 'https://www.tiesto.com/tour'
         },
         {
-          title: "David Guetta, Martin Garrix and Armin van Buuren share historic five win milestone",
-          source: "Techno Music World",
-          timeAgo: "October 2025",
-          summary:
-            "DJ Mag Top 100 overview looks at the long game and consistency behind global touring and studio output.",
-          link: "https://technomusicworld.com/news/dj-mag-top-100-djs-2025-david-guetta-reclaims-no1-as-techno-artists-rise"
+          artist: 'Martin Garrix',
+          genre: 'EDM',
+          info: 'Tour dates and residency dates',
+          url: 'https://martingarrix.com/tour/'
         },
         {
-          title: "Tiesto continues ClubLife journey with new season of podcast episodes",
-          source: "Tiesto",
-          timeAgo: "2025 season",
-          summary:
-            "Weekly ClubLife radio show and podcast stay a trusted filter for peak time club tracks.",
-          link: "https://podnews.net/podcast/ibsr"
+          artist: 'Blasterjaxx',
+          genre: 'EDM',
+          info: 'Upcoming big room and festival shows',
+          url: 'https://blasterjaxx.com/tour'
         },
         {
-          title: "EDM House Network tracks new festival anthems and weekly release rounds",
-          source: "EDM House Network",
-          timeAgo: "Recent weeks",
-          summary:
-            "Regular feature posts cover new tracks, venues and release roundups for big room and progressive fans.",
-          link: "https://edmhousenetwork.com/"
+          artist: 'Vion Konger',
+          genre: 'House',
+          info: 'Future house and club events',
+          url: 'https://www.google.com/search?q=Vion+Konger+tour+dates'
+        },
+        {
+          artist: 'Sick Individuals',
+          genre: 'EDM',
+          info: 'Tour and festival calendar',
+          url: 'https://www.sickindividuals.com/'
+        },
+        {
+          artist: 'Above & Beyond',
+          genre: 'Trance',
+          info: 'Group Therapy and club shows',
+          url: 'https://www.aboveandbeyond.nu/tour'
+        },
+        {
+          artist: 'Fisher',
+          genre: 'House',
+          info: 'House shows and festival sets',
+          url: 'https://www.heyfisher.com/tour'
         }
       ];
 
@@ -930,8 +927,59 @@
           .join('');
       }
 
+      function shuffleArray(array) {
+        var arr = array.slice();
+        for (var i = arr.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var tmp = arr[i];
+          arr[i] = arr[j];
+          arr[j] = tmp;
+        }
+        return arr;
+      }
+
+      // RSS fetch through AllOrigins to avoid CORS problems
+      function fetchRssFeed(feed) {
+        var apiUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(feed.url);
+        return fetch(apiUrl)
+          .then(function (res) {
+            if (!res.ok) {
+              throw new Error('RSS fetch failed');
+            }
+            return res.json();
+          })
+          .then(function (data) {
+            var parser = new DOMParser();
+            var xml = parser.parseFromString(data.contents, 'text/xml');
+            var items = Array.prototype.slice
+              .call(xml.querySelectorAll('item'))
+              .slice(0, 4)
+              .map(function (item) {
+                return {
+                  title: item.querySelector('title') ? item.querySelector('title').textContent : feed.name,
+                  summary: item.querySelector('description') ? item.querySelector('description').textContent : '',
+                  link: item.querySelector('link') ? item.querySelector('link').textContent : '#',
+                  source: feed.name,
+                  timeAgo: item.querySelector('pubDate') ? item.querySelector('pubDate').textContent : ''
+                };
+              });
+            return items;
+          })
+          .catch(function () {
+            return [];
+          });
+      }
+
       function renderNews(items) {
         if (!newsFeed) return;
+        if (!items || !items.length) {
+          newsFeed.innerHTML =
+            '<article class="rounded-2xl bg-slate-900/80 border border-slate-800 p-3">' +
+            '<h3 class="text-sm font-semibold">News feed is not available for the moment</h3>' +
+            '<p class="mt-1 text-[11px] text-slate-300">Try to reload the page after a moment. Until then you can follow your favourite artists on their official sites and social feeds.</p>' +
+            '</article>';
+          return;
+        }
         newsFeed.innerHTML = items
           .map(function (item) {
             return (
@@ -947,8 +995,7 @@
               '</p>' +
               '<p class="mt-1 text-[10px] text-slate-400">' +
               escapeHtml(item.source || '') +
-              ' · ' +
-              escapeHtml(item.timeAgo || '') +
+              (item.timeAgo ? ' · ' + escapeHtml(item.timeAgo) : '') +
               '</p>' +
               '</a>' +
               '</article>'
@@ -957,15 +1004,46 @@
           .join('');
       }
 
-      function shuffleArray(array) {
-        var arr = array.slice();
-        for (var i = arr.length - 1; i > 0; i--) {
-          var j = Math.floor(Math.random() * (i + 1));
-          var tmp = arr[i];
-          arr[i] = arr[j];
-          arr[j] = tmp;
-        }
-        return arr;
+      function loadRss() {
+        Promise.all(rssSources.map(fetchRssFeed)).then(function (results) {
+          var allItems = [];
+          results.forEach(function (arr) {
+            allItems = allItems.concat(arr);
+          });
+          // Simple shuffle for variety
+          allItems = shuffleArray(allItems).slice(0, 6);
+          renderNews(allItems);
+        });
+      }
+
+      function renderShows(items) {
+        if (!showsList) return;
+        showsList.innerHTML = items
+          .map(function (show) {
+            return (
+              '<article class="rounded-2xl bg-slate-900/80 border border-slate-800 p-3 flex flex-col">' +
+              '<div class="flex items-center justify-between gap-2">' +
+              '<div>' +
+              '<p class="text-[11px] uppercase tracking-[0.22em] text-emerald-400">' +
+              escapeHtml(show.genre || 'EDM') +
+              '</p>' +
+              '<h3 class="text-sm font-semibold">' +
+              escapeHtml(show.artist || '') +
+              '</h3>' +
+              '</div>' +
+              '</div>' +
+              '<p class="mt-1 text-[11px] text-slate-300">' +
+              escapeHtml(show.info || '') +
+              '</p>' +
+              '<a href="' +
+              escapeHtml(show.url || '#') +
+              '" target="_blank" rel="noopener noreferrer" class="mt-2 inline-flex self-start px-3 py-1.5 rounded-full bg-slate-950 text-sky-300 border border-slate-700 text-[11px] font-semibold">' +
+              'Open tour dates' +
+              '</a>' +
+              '</article>'
+            );
+          })
+          .join('');
       }
 
       function initYear() {
@@ -995,9 +1073,7 @@
         });
         if (cookieSettings) {
           cookieSettings.addEventListener('click', function () {
-            alert(
-              'You can fine tune cookies in your browser privacy settings and by clearing site data.'
-            );
+            alert('You can control cookies in browser privacy settings and by clearing site data.');
           });
         }
       }
@@ -1011,7 +1087,7 @@
           newsletterMessage.textContent =
             'Thank you ' +
             email.value +
-            '. Newsletter signup handling will be connected soon and your interest is already noted.';
+            '. Newsletter handling will be connected and your interest is already registered.';
           newsletterMessage.classList.remove('hidden');
           email.value = '';
         });
@@ -1068,14 +1144,20 @@
         }
         if (newsRefresh) {
           newsRefresh.addEventListener('click', function () {
-            renderNews(shuffleArray(edmNews).slice(0, 4));
+            loadRss();
+          });
+        }
+        if (showsRefresh) {
+          showsRefresh.addEventListener('click', function () {
+            renderShows(shuffleArray(showsData).slice(0, 5));
           });
         }
       }
 
       // Initial render
       renderTracks(demoTracks);
-      renderNews(edmNews.slice(0, 4));
+      renderShows(showsData.slice(0, 5));
+      loadRss();
       initYear();
       initCookieBanner();
       initNewsletterForm();
