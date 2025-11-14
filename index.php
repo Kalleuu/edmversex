@@ -37,10 +37,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/icon-32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/icon-180.png">
 
-    <!-- Google AdSense (global) -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4201977277980522"
-        crossorigin="anonymous"></script>
-
     <!-- Tailwind via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -166,16 +162,21 @@
         <!-- Top ad slot (above the fold) -->
         <section class="mx-auto max-w-5xl px-4 pb-3">
             <section class="rounded-2xl border border-slate-800/80 bg-slate-900/70 p-2 flex items-center justify-center">
-                <!-- Google AdSense top banner -->
+                <!-- Replace this placeholder with your Google AdSense top banner -->
+                <!--
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=YOUR_AD_CLIENT_ID"
+                        crossorigin="anonymous"></script>
                 <ins class="adsbygoogle"
                      style="display:block"
-                     data-ad-client="ca-pub-4201977277980522"
+                     data-ad-client="YOUR_AD_CLIENT_ID"
                      data-ad-slot="TOP_BANNER_SLOT_ID"
                      data-ad-format="auto"
                      data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                -->
+                <p class="text-[11px] text-slate-400 tracking-wide uppercase">
+                    Sponsored · Your banner ad will show here
+                </p>
             </section>
         </section>
     </header>
@@ -344,16 +345,19 @@
 
                 <!-- Inline ad between cards -->
                 <section class="mt-3 rounded-2xl border border-slate-800 bg-slate-950/80 p-2">
-                    <!-- Google AdSense in-feed unit -->
+                    <!-- Replace with in-feed AdSense unit -->
+                    <!--
                     <ins class="adsbygoogle"
                          style="display:block"
-                         data-ad-client="ca-pub-4201977277980522"
+                         data-ad-client="YOUR_AD_CLIENT_ID"
                          data-ad-slot="IN_FEED_SLOT_ID"
-                         data-ad-format="fluid"
-                         data-ad-layout-key="-fb+5w+4e-db+86"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                    -->
+                    <p class="text-[11px] text-slate-400 text-center">
+                        Sponsored track recommendations will appear inside this feed.
+                    </p>
                 </section>
             </section>
         </section>
@@ -423,9 +427,10 @@
                         </a>
                     </article>
 
-                    <!-- Inline own sponsored card (ei AdSense, oma myynti) -->
+                    <!-- Inline ad card -->
                     <article role="listitem"
                              class="rounded-2xl border border-emerald-500/40 bg-slate-950/90 p-3">
+                        <!-- Replace text card with native AdSense in-article unit -->
                         <p class="text-[11px] font-semibold tracking-[0.25em] uppercase text-emerald-400">
                             Sponsored
                         </p>
@@ -515,16 +520,19 @@
                 <section class="flex items-center gap-3">
                     <!-- Bottom ad (small banner) -->
                     <section class="flex-1">
-                        <!-- Google AdSense bottom banner -->
+                        <!-- Replace with AdSense responsive unit -->
+                        <!--
                         <ins class="adsbygoogle"
                              style="display:block"
-                             data-ad-client="ca-pub-4201977277980522"
+                             data-ad-client="YOUR_AD_CLIENT_ID"
                              data-ad-slot="BOTTOM_BANNER_SLOT_ID"
                              data-ad-format="auto"
                              data-full-width-responsive="true"></ins>
-                        <script>
-                            (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
+                        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                        -->
+                        <p class="text-[10px] text-slate-400 truncate">
+                            Sponsored · Your responsive bottom banner will appear here.
+                        </p>
                     </section>
 
                     <!-- Quick nav buttons -->
