@@ -18,11 +18,11 @@
   <!-- SEO basics -->
   <meta
     name="description"
-    content="EDM VERSEX is a daily hub for new EDM releases, DJ sets, playlists and news with a fast mobile first experience and ad monetisation ready."
+    content="EDM VERSEX is a premium daily hub for EDM releases, DJ sets, playlists and news with a fast mobile first experience and ad monetisation ready."
   />
   <meta
     name="keywords"
-    content="EDM, electronic dance music, house, trance, techno, SoundCloud, DJ mixes, producer news, playlists, festival news"
+    content="EDM, electronic dance music, house, trance, techno, SoundCloud, DJ mixes, producer news, playlists, festival news, Armin van Buuren, Tiesto, Martin Garrix"
   />
   <meta name="author" content="EDM VERSEX" />
 
@@ -109,6 +109,22 @@
     .snap-start {
       scroll-snap-align: start;
     }
+
+    /* Simple mobile menu animation */
+    #mobile-menu {
+      transform-origin: top right;
+      transition: opacity 0.18s ease, transform 0.18s ease;
+    }
+    #mobile-menu.hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.95);
+    }
+    #mobile-menu.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+    }
   </style>
 
   <!-- Structured data -->
@@ -146,8 +162,9 @@
   <header class="sticky top-0 z-40 backdrop-blur-xl bg-slate-950/80 border-b border-slate-800/70">
     <nav class="mx-auto max-w-6xl px-4 py-3 flex items-center gap-3">
       <button
+        id="menu-toggle"
         class="h-10 w-10 rounded-2xl bg-slate-900/80 border border-slate-700/80 flex items-center justify-center"
-        aria-label="Open menu"
+        aria-label="Open navigation menu"
       >
         ☰
       </button>
@@ -172,6 +189,8 @@
         class="hidden md:flex items-center ml-auto rounded-full bg-slate-900/80 border border-slate-700/70 px-3 py-1.5 text-xs gap-2"
         role="search"
         aria-label="Search tracks and artists"
+        action="https://www.google.com/search"
+        method="get"
       >
         <span aria-hidden="true">🔎</span>
         <label class="sr-only" for="search">Search</label>
@@ -182,9 +201,11 @@
           class="bg-transparent border-none outline-none text-slate-100 placeholder:text-slate-500 w-40"
           placeholder="Search tracks, artists or labels"
         />
+        <input type="hidden" name="as_sitesearch" value="soundcloud.com spotify.com youtube.com" />
       </form>
 
       <button
+        id="search-mobile"
         class="md:hidden ml-auto h-9 w-9 rounded-full bg-slate-900/80 border border-slate-700/70 flex items-center justify-center"
         aria-label="Open search"
       >
@@ -210,6 +231,40 @@
     </section>
   </header>
 
+  <!-- Mobile overlay menu -->
+  <section
+    id="mobile-menu"
+    class="hidden fixed inset-0 z-40 bg-slate-950/95 flex flex-col"
+    aria-hidden="true"
+  >
+    <div class="flex justify-end px-4 pt-4">
+      <button
+        id="menu-close"
+        class="h-9 w-9 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center"
+        aria-label="Close menu"
+      >
+        ✕
+      </button>
+    </div>
+    <nav class="flex-1 flex flex-col justify-center items-center gap-4 text-sm">
+      <a href="#main" class="px-4 py-2 rounded-full bg-slate-900/90 border border-slate-700/80">
+        Feed
+      </a>
+      <a href="#track-feed" class="px-4 py-2 rounded-full bg-slate-900/90 border border-slate-700/80">
+        New tracks
+      </a>
+      <a href="#news-feed" class="px-4 py-2 rounded-full bg-slate-900/90 border border-slate-700/80">
+        News
+      </a>
+      <a href="/privacy.html" class="px-4 py-2 rounded-full bg-slate-900/90 border border-slate-700/80">
+        Privacy
+      </a>
+      <a href="/cookies.html" class="px-4 py-2 rounded-full bg-slate-900/90 border border-slate-700/80">
+        Cookies
+      </a>
+    </nav>
+  </section>
+
   <!-- Now playing bar -->
   <section class="sticky top-[3.75rem] z-30 bg-gradient-to-b from-slate-950/95 to-slate-950/80 border-b border-slate-800/60">
     <div class="mx-auto max-w-6xl px-4 py-2 flex items-center gap-3 text-xs">
@@ -223,12 +278,14 @@
           <span class="text-slate-400 text-[11px]">future rave set</span>
         </p>
       </div>
-      <button
-        class="h-8 px-3 rounded-full bg-emerald-500 text-slate-950 text-[11px] font-semibold"
-        type="button"
+      <a
+        href="https://soundcloud.com/search?q=NovaPulse%20future%20rave"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="h-8 px-3 rounded-full bg-emerald-500 text-slate-950 text-[11px] font-semibold flex items-center justify-center"
       >
         Listen
-      </button>
+      </a>
     </div>
   </section>
 
@@ -244,14 +301,14 @@
       <!-- Hero section with swipe cards -->
       <section class="rounded-3xl bg-slate-950/90 border border-slate-800 shadow-edmSoft overflow-hidden">
         <div class="p-4 sm:p-6 border-b border-slate-800/70">
-          <p class="text-[11px] tracking-[0.22em] uppercase text-emerald-400">
+          <p class="text-[11px] uppercase tracking-[0.22em] text-emerald-400">
             Today at EDM VERSEX
           </p>
           <h1 class="mt-1 text-xl sm:text-2xl font-semibold">
             New tracks, sets and headlines in one continuous feed.
           </h1>
           <p class="mt-2 text-sm text-slate-300">
-            Swipe through featured drops or scroll down for the full EDM feed with curated content and commercial placements ready for monetisation.
+            Swipe through featured drops or scroll down for the full EDM feed with curated content and monetised placements.
           </p>
         </div>
 
@@ -272,16 +329,18 @@
                   Midnight Skyline future rave edit
                 </h2>
                 <p class="mt-1 text-[11px] text-slate-200">
-                  NovaPulse · 128 BPM · festival tested
+                  NovaPulse 128 BPM festival ready cut for 2030 floors.
                 </p>
               </header>
               <footer class="mt-3 flex items-center justify-between text-[11px]">
-                <button
-                  type="button"
+                <a
+                  href="https://soundcloud.com/search?q=Midnight%20Skyline%20NovaPulse"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   class="px-3 py-1 rounded-full bg-slate-950/90 border border-emerald-400 text-emerald-300"
                 >
-                  Play snippet
-                </button>
+                  Play on SoundCloud
+                </a>
                 <span class="text-slate-300">
                   19.4k plays
                 </span>
@@ -300,16 +359,18 @@
                   Sunrise melodic techno journey
                 </h2>
                 <p class="mt-1 text-[11px] text-slate-200">
-                  Kinetic Dunes live recording
+                  Kinetic Dunes live recording for long headphones sessions.
                 </p>
               </header>
               <footer class="mt-3 flex items-center justify-between text-[11px]">
-                <button
-                  type="button"
+                <a
+                  href="https://soundcloud.com/search?q=Kinetic%20Dunes%20melodic%20techno"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   class="px-3 py-1 rounded-full bg-slate-950/90 border border-sky-400 text-sky-200"
                 >
-                  Queue set
-                </button>
+                  Open mix
+                </a>
                 <span class="text-slate-300">
                   73 minutes
                 </span>
@@ -325,19 +386,19 @@
                   Sponsored
                 </p>
                 <h2 class="mt-1 text-sm font-semibold">
-                  Promote your label or festival headline here
+                  Promote a label, release or festival headline.
                 </h2>
                 <p class="mt-1 text-[11px] text-slate-200">
-                  Reach a focused global EDM audience ready for new music and events.
+                  Reach a global EDM crowd that comes for music and returns for discovery.
                 </p>
               </header>
               <footer class="mt-3 flex items-center justify-between text-[11px]">
-                <button
-                  type="button"
+                <a
+                  href="mailto:ads@edmversex.com?subject=EDM%20VERSEX%20media%20kit"
                   class="px-3 py-1 rounded-full bg-amber-400 text-slate-950 font-semibold"
                 >
                   Contact sales
-                </button>
+                </a>
                 <span class="text-slate-400">
                   ads@edmversex.com
                 </span>
@@ -357,14 +418,18 @@
                 New tracks
               </p>
               <h2 class="text-sm sm:text-base font-semibold">
-                Hand picked releases and demo highlights
+                Curated releases and demo highlights.
               </h2>
+              <p class="mt-1 text-[11px] text-slate-400">
+                Play buttons open a SoundCloud search so every card leads to audio.
+              </p>
             </div>
             <button
               type="button"
+              id="tracks-refresh"
               class="hidden sm:inline-flex items-center gap-1 text-[11px] px-3 py-1.5 rounded-full bg-slate-900 border border-slate-700/80"
             >
-              Refresh feed
+              Refresh order
             </button>
           </header>
 
@@ -396,7 +461,7 @@
                 Editor picks
               </p>
               <h2 class="text-sm sm:text-base font-semibold">
-                Playlists and DJ sets that work on floors and streams
+                Playlists and DJ sets that work on floors and streams.
               </h2>
             </div>
           </header>
@@ -407,17 +472,19 @@
                 Deep city afterhours
               </h3>
               <p class="mt-1 text-[12px] text-slate-300">
-                Slow burning melodic cuts for late hours and focused listening sessions.
+                Slow burning melodic cuts for late hours and focused listening.
               </p>
               <p class="mt-2 text-[11px] text-slate-400">
-                Updated three times each week with underground selections.
+                Updated several times each week with underground selections.
               </p>
-              <button
-                type="button"
+              <a
+                href="https://open.spotify.com/search/deep%20city%20afterhours"
+                target="_blank"
+                rel="noopener noreferrer"
                 class="mt-3 inline-flex self-start px-3 py-1.5 rounded-full bg-sky-500 text-slate-950 text-[11px] font-semibold"
               >
-                Open playlist
-              </button>
+                Open playlist on Spotify
+              </a>
             </article>
 
             <article class="rounded-2xl bg-slate-900/80 border border-slate-800 p-3 flex flex-col">
@@ -428,14 +495,16 @@
                 Big room drops, techno stabs and vocal hooks tuned for crowd moments.
               </p>
               <p class="mt-2 text-[11px] text-slate-400">
-                Focus on current season festival rotation and new artists breaking through.
+                Based on current festival rotation and new artists that rise fast.
               </p>
-              <button
-                type="button"
+              <a
+                href="https://open.spotify.com/search/peak%20time%20festival%20edm"
+                target="_blank"
+                rel="noopener noreferrer"
                 class="mt-3 inline-flex self-start px-3 py-1.5 rounded-full bg-emerald-500 text-slate-950 text-[11px] font-semibold"
               >
-                Open playlist
-              </button>
+                Open playlist on Spotify
+              </a>
             </article>
           </div>
         </section>
@@ -453,14 +522,18 @@
               EDM headlines
             </p>
             <h2 class="text-sm font-semibold">
-              Stories that matter to producers and DJs
+              Stories from Armin van Buuren, Tiesto, Martin Garrix and more.
             </h2>
+            <p class="mt-1 text-[11px] text-slate-400">
+              Links go straight to trusted news and artist sources.
+            </p>
           </div>
           <button
             type="button"
+            id="news-refresh"
             class="inline-flex items-center gap-1 text-[11px] px-3 py-1.5 rounded-full bg-slate-900 border border-slate-700/80"
           >
-            Refresh
+            Shuffle stories
           </button>
         </header>
 
@@ -491,7 +564,7 @@
             Genre trends
           </p>
           <h2 class="text-sm font-semibold">
-            What the community listens to this week
+            What the community listens to this week.
           </h2>
         </header>
         <div class="flex flex-wrap gap-2">
@@ -535,10 +608,10 @@
             Creator newsletter
           </p>
           <h2 class="mt-1 text-sm font-semibold">
-            Weekly email with tools, tips and release opportunities
+            Weekly email with tools, tips and release opportunities.
           </h2>
         </header>
-        <form class="mt-3 space-y-2" aria-label="Newsletter signup form">
+        <form id="newsletter-form" class="mt-3 space-y-2" aria-label="Newsletter signup form">
           <label for="newsletter-email" class="text-[11px] font-semibold tracking-[0.18em] uppercase">
             Email
           </label>
@@ -558,6 +631,10 @@
           <p class="text-[10px] mt-1 text-slate-900/90">
             Short emails that focus on real value for music makers and DJs. One click unsubscribe at any moment.
           </p>
+          <p
+            id="newsletter-message"
+            class="hidden text-[11px] mt-1 text-slate-900/90 font-semibold"
+          ></p>
         </form>
       </section>
     </aside>
@@ -679,10 +756,22 @@
     (function () {
       'use strict';
 
-      const trackFeed = document.getElementById('track-feed');
-      const newsFeed = document.getElementById('news-feed');
+      var trackFeed = document.getElementById('track-feed');
+      var newsFeed = document.getElementById('news-feed');
+      var tracksRefresh = document.getElementById('tracks-refresh');
+      var newsRefresh = document.getElementById('news-refresh');
+      var yearSpan = document.getElementById('year');
+      var cookieBanner = document.getElementById('cookie-banner');
+      var cookieAccept = document.getElementById('cookie-accept-all');
+      var cookieSettings = document.getElementById('cookie-settings');
+      var newsletterForm = document.getElementById('newsletter-form');
+      var newsletterMessage = document.getElementById('newsletter-message');
+      var menuToggle = document.getElementById('menu-toggle');
+      var menuClose = document.getElementById('menu-close');
+      var mobileMenu = document.getElementById('mobile-menu');
+      var searchMobile = document.getElementById('search-mobile');
 
-      const demoTracks = [
+      var demoTracks = [
         {
           title: 'Solar Echoes',
           artist: 'Luna Cypher',
@@ -709,30 +798,75 @@
           timeAgo: '9 hours ago',
           bpm: '123',
           length: '7:03'
+        },
+        {
+          title: 'Club pressure',
+          artist: 'Velvet Static',
+          tag: 'Bass house',
+          plays: '6.9k',
+          timeAgo: 'today',
+          bpm: '128',
+          length: '4:59'
         }
       ];
 
-      const demoNews = [
+      // Curated EDM news and artist stories linking to real sources
+      var edmNews = [
         {
-          title: 'Festival season focuses on immersive audio and light experiences',
-          source: 'Festival Radar',
-          timeAgo: '3 hours ago',
+          title: "Armin van Buuren announces first acoustic album Piano",
+          source: "Armada Music",
+          timeAgo: "October 2025",
           summary:
-            'Major stages upgrade their sound and visual rigs with three dimensional concepts and responsive lighting tied to stems.'
+            "Fifteen track self composed album that highlights the writer side behind decades of trance and festival main stages.",
+          link: "https://news.armadamusic.com/releases/"
         },
         {
-          title: 'Producers share daily studio routines that keep ideas fresh',
-          source: 'Producer Journal',
-          timeAgo: '6 hours ago',
+          title: "Armin van Buuren and KI/KI present AMF anthem Put Your Bassline",
+          source: "Armin van Buuren official",
+          timeAgo: "Autumn 2025",
           summary:
-            'Simple schedules with room for experimentation help creators finish more music with less pressure.'
+            "A hard hitting AMF anthem that blends trance heritage with modern warehouse energy.",
+          link: "https://www.arminvanbuuren.com/"
         },
         {
-          title: 'Independent labels form new collaborative release networks',
-          source: 'Beat Insight',
-          timeAgo: 'yesterday',
+          title: "Martin Garrix recovers after sudden surgery and pauses shows",
+          source: "EDM Tunes",
+          timeAgo: "November 2025",
           summary:
-            'Shared resources give smaller imprints more power for discovery, promotion and physical releases.'
+            "Superstar DJ cancels a weekend of shows after emergency appendicitis surgery and focuses on safe recovery.",
+          link: "https://www.edmtunes.com/2025/11/martin-garrix-appendicitis-surgery/"
+        },
+        {
+          title: "DJ Mag Top 100 DJs 2025 results highlight veteran and rising names",
+          source: "EDM Tunes",
+          timeAgo: "October 2025",
+          summary:
+            "Latest edition of the public vote ranking reflects fan energy across EDM with headline wins and movement for new faces.",
+          link: "https://www.edmtunes.com/2025/10/dj-mag-top-100-djs-award-results-of-2025-revealed/"
+        },
+        {
+          title: "David Guetta, Martin Garrix and Armin van Buuren share historic five win milestone",
+          source: "Techno Music World",
+          timeAgo: "October 2025",
+          summary:
+            "DJ Mag Top 100 overview looks at the long game and consistency behind global touring and studio output.",
+          link: "https://technomusicworld.com/news/dj-mag-top-100-djs-2025-david-guetta-reclaims-no1-as-techno-artists-rise"
+        },
+        {
+          title: "Tiesto continues ClubLife journey with new season of podcast episodes",
+          source: "Tiesto",
+          timeAgo: "2025 season",
+          summary:
+            "Weekly ClubLife radio show and podcast stay a trusted filter for peak time club tracks.",
+          link: "https://podnews.net/podcast/ibsr"
+        },
+        {
+          title: "EDM House Network tracks new festival anthems and weekly release rounds",
+          source: "EDM House Network",
+          timeAgo: "Recent weeks",
+          summary:
+            "Regular feature posts cover new tracks, venues and release roundups for big room and progressive fans.",
+          link: "https://edmhousenetwork.com/"
         }
       ];
 
@@ -745,10 +879,16 @@
           .replace(/'/g, '&#039;');
       }
 
+      function soundcloudSearchUrl(title, artist) {
+        var query = encodeURIComponent(String(title || '') + ' ' + String(artist || ''));
+        return 'https://soundcloud.com/search?q=' + query;
+      }
+
       function renderTracks(items) {
         if (!trackFeed) return;
         trackFeed.innerHTML = items
           .map(function (track) {
+            var url = soundcloudSearchUrl(track.title, track.artist);
             return (
               '<article class="rounded-2xl bg-slate-900/80 border border-slate-800 p-3 flex gap-3">' +
               '<div class="flex-1 min-w-0">' +
@@ -775,11 +915,13 @@
               '</p>' +
               '</div>' +
               '<div class="flex flex-col items-end justify-between text-[11px]">' +
-              '<button class="px-3 py-1 rounded-full bg-emerald-500 text-slate-950 font-semibold">' +
+              '<a href="' +
+              url +
+              '" target="_blank" rel="noopener noreferrer" class="px-3 py-1 rounded-full bg-emerald-500 text-slate-950 font-semibold">' +
               'Play' +
-              '</button>' +
-              '<button class="mt-2 px-2 py-1 rounded-full bg-slate-950 text-slate-200 border border-slate-700">' +
-              'Save' +
+              '</a>' +
+              '<button class="mt-2 px-2 py-1 rounded-full bg-slate-950 text-slate-200 border border-slate-700" type="button">' +
+              'Save for later' +
               '</button>' +
               '</div>' +
               '</article>'
@@ -794,7 +936,10 @@
           .map(function (item) {
             return (
               '<article class="rounded-2xl bg-slate-900/80 border border-slate-800 p-3">' +
-              '<h3 class="text-sm font-semibold">' +
+              '<a href="' +
+              escapeHtml(item.link || '#') +
+              '" target="_blank" rel="noopener noreferrer" class="block group">' +
+              '<h3 class="text-sm font-semibold group-hover:text-emerald-400">' +
               escapeHtml(item.title || '') +
               '</h3>' +
               '<p class="mt-1 text-[11px] text-slate-300">' +
@@ -805,16 +950,27 @@
               ' · ' +
               escapeHtml(item.timeAgo || '') +
               '</p>' +
+              '</a>' +
               '</article>'
             );
           })
           .join('');
       }
 
+      function shuffleArray(array) {
+        var arr = array.slice();
+        for (var i = arr.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var tmp = arr[i];
+          arr[i] = arr[j];
+          arr[j] = tmp;
+        }
+        return arr;
+      }
+
       function initYear() {
-        var span = document.getElementById('year');
-        if (span) {
-          span.textContent = new Date().getFullYear();
+        if (yearSpan) {
+          yearSpan.textContent = new Date().getFullYear();
         }
       }
 
@@ -827,24 +983,105 @@
       }
 
       function initCookieBanner() {
-        var banner = document.getElementById('cookie-banner');
-        var accept = document.getElementById('cookie-accept-all');
-        if (!banner || !accept) return;
+        if (!cookieBanner || !cookieAccept) return;
         if (shouldShowCookieBanner()) {
-          banner.classList.remove('hidden');
+          cookieBanner.classList.remove('hidden');
         }
-        accept.addEventListener('click', function () {
+        cookieAccept.addEventListener('click', function () {
           try {
             localStorage.setItem('edmversex_cookie_consent', 'all');
           } catch (e) {}
-          banner.classList.add('hidden');
+          cookieBanner.classList.add('hidden');
+        });
+        if (cookieSettings) {
+          cookieSettings.addEventListener('click', function () {
+            alert(
+              'You can fine tune cookies in your browser privacy settings and by clearing site data.'
+            );
+          });
+        }
+      }
+
+      function initNewsletterForm() {
+        if (!newsletterForm || !newsletterMessage) return;
+        newsletterForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var email = document.getElementById('newsletter-email');
+          if (!email || !email.value) return;
+          newsletterMessage.textContent =
+            'Thank you ' +
+            email.value +
+            '. Newsletter signup handling will be connected soon and your interest is already noted.';
+          newsletterMessage.classList.remove('hidden');
+          email.value = '';
         });
       }
 
+      function setMobileMenuVisible(visible) {
+        if (!mobileMenu) return;
+        if (visible) {
+          mobileMenu.classList.remove('hidden');
+          mobileMenu.classList.add('visible');
+          mobileMenu.setAttribute('aria-hidden', 'false');
+        } else {
+          mobileMenu.classList.remove('visible');
+          mobileMenu.classList.add('hidden');
+          mobileMenu.setAttribute('aria-hidden', 'true');
+        }
+      }
+
+      function initMenu() {
+        if (menuToggle) {
+          menuToggle.addEventListener('click', function () {
+            setMobileMenuVisible(true);
+          });
+        }
+        if (menuClose) {
+          menuClose.addEventListener('click', function () {
+            setMobileMenuVisible(false);
+          });
+        }
+        if (mobileMenu) {
+          mobileMenu.addEventListener('click', function (e) {
+            if (e.target === mobileMenu) {
+              setMobileMenuVisible(false);
+            }
+          });
+        }
+      }
+
+      function initSearchMobile() {
+        if (!searchMobile) return;
+        searchMobile.addEventListener('click', function () {
+          var searchInput = document.getElementById('search');
+          if (searchInput) {
+            searchInput.focus();
+          }
+        });
+      }
+
+      function initFeedControls() {
+        if (tracksRefresh) {
+          tracksRefresh.addEventListener('click', function () {
+            renderTracks(shuffleArray(demoTracks));
+          });
+        }
+        if (newsRefresh) {
+          newsRefresh.addEventListener('click', function () {
+            renderNews(shuffleArray(edmNews).slice(0, 4));
+          });
+        }
+      }
+
+      // Initial render
       renderTracks(demoTracks);
-      renderNews(demoNews);
+      renderNews(edmNews.slice(0, 4));
       initYear();
       initCookieBanner();
+      initNewsletterForm();
+      initMenu();
+      initSearchMobile();
+      initFeedControls();
     })();
   </script>
 </body>
