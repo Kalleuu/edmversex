@@ -5,7 +5,10 @@
   <title>EDM VERSEX | Daily Electronic Dance Music Hub</title>
 
   <!-- Viewport / mobile web app -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+  />
   <meta name="theme-color" content="#020617" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +34,7 @@
   />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://edmversex.com/" />
-  <meta property="og:image" content="https://edmversex.com/edm-hub-2030-preview.jpg" />
+  <meta property="og:image" content="https://edmversex.com/icons/edmversex-512.png" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -41,9 +44,10 @@
     content="New tracks, DJ sets, playlists and headlines in a single EDM feed."
   />
 
-  <!-- Icons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/icon-32.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/icon-180.png" />
+  <!-- Icons / PWA -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/edmversex-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/edmversex-192.png" />
+  <link rel="manifest" href="/manifest.json" />
 
   <!-- Google AdSense (global) -->
   <script
@@ -115,12 +119,17 @@
       "name": "EDM VERSEX",
       "url": "https://edmversex.com/",
       "description": "Daily hub for fresh EDM releases, sets and news.",
-      "inLanguage": "en"
+      "inLanguage": "en",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://edmversex.com/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
     }
   </script>
 </head>
 
-<body class="min-h-screen text-slate-50 antialiased overflow-x-hidden relative">
+<body class="min-h-screen text-slate-50 antialiased overflow-x-hidden relative" id="top">
 
   <!-- Skip to content -->
   <a
@@ -605,9 +614,15 @@
             <span id="year"></span>
             EDM VERSEX
           </p>
-          <a href="#" class="underline">
-            Privacy and cookies
-          </a>
+          <div class="flex gap-2">
+            <a href="/privacy.html" class="underline">
+              Privacy
+            </a>
+            <span aria-hidden="true">·</span>
+            <a href="/cookies.html" class="underline">
+              Cookies
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -623,7 +638,13 @@
         Cookies and personalisation
       </p>
       <p class="text-[11px] text-slate-200">
-        This site uses cookies for analytics, content personalisation and advertising in line with European regulation.
+        This site uses cookies for analytics, content personalisation and advertising in line with European regulation. You can change your choice at any time in your browser settings.
+      </p>
+      <p class="text-[11px] text-slate-300">
+        Read more in our
+        <a href="/cookies.html" class="underline text-sky-400">Cookie Policy</a>
+        and
+        <a href="/privacy.html" class="underline text-sky-400">Privacy Policy</a>.
       </p>
       <div class="flex flex-wrap gap-2 mt-1">
         <button
