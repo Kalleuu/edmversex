@@ -27,7 +27,7 @@
   <meta name="twitter:description"
         content="Live EDM hub with SoundCloud powered Top 50 & latest releases.">
 
-  <!-- Icons (päivitä polut halutessasi) -->
+  <!-- Icons (voit vaihtaa polut) -->
   <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/icon-180.png">
 
@@ -92,13 +92,11 @@
 </head>
 <body class="min-h-screen text-slate-50 antialiased bg-edm-bg relative">
 
-<!-- Skip link -->
 <a href="#main"
    class="sr-only focus:not-sr-only focus:fixed focus:z-50 focus:top-3 focus:left-3 focus:px-4 focus:py-2 focus:rounded-full focus:bg-slate-900 focus:text-emerald-400">
   Skip to main content
 </a>
 
-<!-- Taustawave canvas -->
 <canvas id="wave-canvas"></canvas>
 
 <!-- HEADER -->
@@ -123,10 +121,10 @@
     </nav>
   </nav>
 
-  <!-- Top banner ad (sisältöä ympärillä -> OK AdSenselle) -->
+  <!-- Top banner ad -->
   <section class="mx-auto max-w-6xl px-4 pb-3">
     <section class="rounded-2xl border border-slate-800 bg-slate-900/90 p-2 flex items-center justify-center">
-      <!-- Vaihda data-ad-slot omaan yksikköön kun olet luonut sen AdSensessä -->
+      <!-- Vaihda data-ad-slot omaan yksikköösi AdSensessä -->
       <ins class="adsbygoogle"
            style="display:block"
            data-ad-client="ca-pub-4201977277980522"
@@ -160,33 +158,29 @@
         </h1>
         <p class="text-sm sm:text-[15px] text-slate-300/90">
           EDM VERSEX connects directly to SoundCloud via a secure Cloudflare backend.
-          The Top 50 and Latest sections below are updated automatically whenever your profile or label feed changes.
-          No lists are manually hard-coded, so the page always reflects the actual sound of the moment.
+          The Top 50 and Latest sections below are updated automatically whenever your profile feed changes.
         </p>
 
         <section class="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-3 text-[11px] sm:text-xs">
-          <section
-            class="rounded-2xl bg-slate-900/80 border border-slate-700/80 px-3 py-2 flex flex-col justify-between">
+          <section class="rounded-2xl bg-slate-900/80 border border-slate-700/80 px-3 py-2">
             <p class="text-slate-400 uppercase tracking-[0.2em]">Now tracking</p>
             <p class="mt-1 text-slate-50 font-semibold" id="stat-track-count">–</p>
-            <p class="text-slate-400 mt-1">Total tracks scanned from SoundCloud feed.</p>
+            <p class="text-slate-400 mt-1">Total tracks scanned.</p>
           </section>
-          <section
-            class="rounded-2xl bg-slate-900/80 border border-slate-700/80 px-3 py-2 flex flex-col justify-between">
+          <section class="rounded-2xl bg-slate-900/80 border border-slate-700/80 px-3 py-2">
             <p class="text-slate-400 uppercase tracking-[0.2em]">Latest update</p>
             <p class="mt-1 text-slate-50 font-semibold" id="stat-last-updated">–</p>
-            <p class="text-slate-400 mt-1">Last time the chart was refreshed from backend.</p>
+            <p class="text-slate-400 mt-1">Local time of last refresh.</p>
           </section>
-          <section
-            class="rounded-2xl bg-slate-900/80 border border-slate-700/80 px-3 py-2 flex flex-col justify-between">
+          <section class="rounded-2xl bg-slate-900/80 border border-slate-700/80 px-3 py-2">
             <p class="text-slate-400 uppercase tracking-[0.2em]">Live mood</p>
             <p class="mt-1 text-slate-50 font-semibold" id="stat-dominant-genre">–</p>
-            <p class="text-slate-400 mt-1">Dominant genre in current Top 50 snapshot.</p>
+            <p class="text-slate-400 mt-1">Dominant genre in current Top 50.</p>
           </section>
         </section>
       </section>
 
-      <!-- Live playlist -->
+      <!-- Live playlist + genre filter -->
       <section class="flex-1 flex flex-col gap-3">
         <section
           class="rounded-2xl bg-slate-950/80 border border-slate-800 overflow-hidden shadow-inner flex flex-col">
@@ -200,13 +194,10 @@
               </p>
             </section>
           </header>
-          <section class="flex-1">
-            <iframe title="EDM VERSEX playlist"
-                    width="100%" height="260"
-                    scrolling="no" frameborder="no"
-                    allow="autoplay"
-                    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/your-profile-or-playlist&color=%2322c55e&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
-            </iframe>
+          <section id="sc-player" class="flex-1 min-h-[220px] flex items-center justify-center">
+            <p class="text-[11px] text-slate-400">
+              Loading SoundCloud player…
+            </p>
           </section>
         </section>
 
@@ -245,7 +236,7 @@
     </section>
   </section>
 
-  <!-- TOP 50 SECTION -->
+  <!-- TOP 50 -->
   <section id="top50"
            class="rounded-3xl bg-edm-glass border border-slate-800/80 backdrop-blur-2xl p-4 sm:p-6 space-y-3">
     <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
@@ -302,7 +293,7 @@
     </section>
   </section>
 
-  <!-- LATEST RELEASES -->
+  <!-- LATEST 20 -->
   <section id="latest"
            class="rounded-3xl bg-edm-panel border border-slate-800 shadow-edm-soft p-4 sm:p-6 space-y-3">
     <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
@@ -338,16 +329,16 @@
     </section>
   </section>
 
-  <!-- STREAMS / PLAYLISTS -->
+  <!-- STREAMS / EDITORIAL TEXT -->
   <section id="streams"
            class="rounded-3xl bg-edm-glass border border-slate-800/80 backdrop-blur-2xl p-4 sm:p-6 space-y-3">
     <header>
       <h2 class="text-sm sm:text-base font-semibold tracking-[0.25em] uppercase text-emerald-400">
-        Live streams & playlist area
+        Live streams & editorial notes
       </h2>
       <p class="mt-1 text-xs sm:text-[13px] text-slate-300/90">
-        Use this area to embed one or more SoundCloud players (profiles, playlists, sets) so visitors can listen while
-        they explore the charts and latest releases.
+        This section adds human-written context to the automatically updated charts. That combination of
+        real editorial text and data-driven lists is exactly what AdSense policy expects from a high-quality site.
       </p>
     </header>
 
@@ -355,70 +346,70 @@
       <section class="rounded-2xl bg-slate-950/80 border border-slate-800 overflow-hidden">
         <header class="p-3 border-b border-slate-800">
           <p class="text-[11px] uppercase tracking-[0.22em] text-emerald-400">
-            Main playlist
-          </p>
-          <p class="text-[11px] text-slate-300/90">
-            One central playlist that represents the core sound of EDM VERSEX.
+            Listening guide
           </p>
         </header>
-        <section>
-          <iframe title="Main SoundCloud playlist"
-                  width="100%" height="240"
-                  scrolling="no" frameborder="no"
-                  allow="autoplay"
-                  src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/your-profile-or-playlist&color=%2322c55e&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
-          </iframe>
+        <section class="p-3 text-[11px] text-slate-300/90 space-y-1">
+          <p>
+            Start with the latest releases list if you want a quick snapshot of what has just dropped on the
+            SoundCloud profile. For a longer session, switch to the Top 50 chart and shuffle through the most
+            played tracks.
+          </p>
+          <p>
+            The live playlist above loads the most recent upload into an embedded SoundCloud player.
+            This keeps the front page feeling alive without requiring manual updates whenever a new track is released.
+          </p>
         </section>
       </section>
 
       <section class="rounded-2xl bg-slate-950/80 border border-slate-800 overflow-hidden">
         <header class="p-3 border-b border-slate-800">
           <p class="text-[11px] uppercase tracking-[0.22em] text-sky-400">
-            Editorial notes & listening tips
+            Ads & experience
           </p>
         </header>
         <section class="p-3 text-[11px] text-slate-300/90 space-y-1">
           <p>
-            This panel is used to share context around your current playlists and guest mixes.
-            It helps visitors understand why certain tracks are highlighted and what kind of mood the playlist suits.
+            Display ads appear only inside rich content views such as the header area and long-form sections,
+            never on empty or purely navigational screens. This layout respects AdSense policies on
+            publisher content and ad placement.
           </p>
           <p>
-            Because this text is written and edited by a human, it also supports AdSense quality
-            guidelines that require genuine publisher content next to any ads.
+            Analytics is used to understand which sections visitors prefer and to optimise the order of content blocks
+            for a smoother, more immersive experience.
           </p>
         </section>
       </section>
     </section>
   </section>
 
-  <!-- ABOUT / POLICY TEXT -->
+  <!-- ABOUT -->
   <section id="about"
            class="rounded-3xl bg-edm-panel border border-slate-800 shadow-edm-soft p-4 sm:p-6 space-y-3">
     <header>
       <h2 class="text-sm sm:text-base font-semibold tracking-[0.25em] uppercase text-emerald-400">
-        About EDM VERSEX, ads and analytics
+        About EDM VERSEX
       </h2>
     </header>
     <section class="space-y-2 text-sm sm:text-[15px] leading-relaxed text-slate-300/90">
       <p>
-        EDM VERSEX is built as a live dashboard for electronic dance music listeners and producers.
-        All track and release lists are fetched in real time from SoundCloud using a secured Cloudflare backend.
-        This keeps the content fresh while protecting API credentials.
+        EDM VERSEX is designed as an independent, content-rich outlet for electronic dance music fans and producers.
+        It uses live SoundCloud data combined with written commentary to highlight tracks, artists and moods.
       </p>
       <p>
-        Google AdSense units on this page are placed inside rich editorial and functional views, never on empty
-        “no-content” screens. This approach follows the program policies that require ads to appear next to meaningful
-        content instead of navigation only.
+        All SoundCloud API credentials are stored securely on the server side using Cloudflare Workers secrets,
+        never inside the public HTML or JavaScript. This allows the charts to stay fresh while keeping your account
+        safe.
       </p>
       <p>
-        Google Analytics 4 is used to understand how people move between the chart, latest releases and playlist
-        sections. This data helps refine the layout so that visitors quickly reach the music they enjoy most.
+        If you run labels, podcasts or events, this page can also act as a central landing page where new listeners
+        discover your sound and advertisers reach a focused audience of EDM fans.
       </p>
     </section>
   </section>
 </main>
 
-<!-- STICKY BOTTOM NAV -->
+<!-- FOOTER / NAV -->
 <footer class="fixed bottom-0 left-0 right-0 z-40">
   <section class="mx-auto max-w-6xl px-4 pb-[env(safe-area-inset-bottom)]">
     <section
@@ -458,14 +449,17 @@
   </section>
 </noscript>
 
-<!-- APP LOGIC: fetch Top50 + Latest from Cloudflare Worker -->
+<!-- APP LOGIC -->
 <script>
   (function () {
     "use strict";
 
-    // VAIHDA NÄMÄ OMAAN WORKER-OSOITTEESEESI KUN WORKER ON JULKAISTU:
-    const TOP_50_ENDPOINT = "https://YOUR-WORKER-URL/api/top50";
-    const LATEST_ENDPOINT = "https://YOUR-WORKER-URL/api/latest";
+    // VAIHDA TÄMÄ OMAAN WORKER-OSOITTEESEESI
+    const WORKER_BASE = "https://YOUR-WORKER-URL"; // esim. https://royal-union-d5f0.kalleuusitalo1.workers.dev
+
+    const TOP_50_ENDPOINT = WORKER_BASE + "/api/top50";
+    const LATEST_ENDPOINT = WORKER_BASE + "/api/latest";
+    const PLAYER_ENDPOINT = WORKER_BASE + "/api/player-url";
 
     const top50Container = document.getElementById("top50-list");
     const top50Skeleton = document.getElementById("top50-skeleton");
@@ -484,6 +478,8 @@
     const statTopArtist = document.getElementById("stat-top-artist");
     const statAvgPlays = document.getElementById("stat-avg-plays");
     const statGenreCount = document.getElementById("stat-genre-count");
+
+    const scPlayerBox = document.getElementById("sc-player");
 
     let top50Data = [];
     let latestData = [];
@@ -507,6 +503,7 @@
       return "other";
     }
 
+    // --- Renderointi Top 50 ---
     function renderTop50() {
       if (!top50Container) return;
       top50Container.setAttribute("aria-busy", "true");
@@ -527,10 +524,10 @@
           "  </section>" +
           '  <section class="flex-1 min-w-0">' +
           '    <p class="text-[10px] uppercase tracking-[0.2em] text-slate-400">' +
-                 (track.genre || "EDM") + "</p>" +
+          (track.genre || "EDM") + "</p>" +
           '    <a href="' + (track.url || "#") + '" target="_blank" rel="noopener noreferrer"' +
           '       class="block truncate text-slate-50 font-semibold hover:text-emerald-400">' +
-                 (track.title || "Untitled track") + "</a>" +
+          (track.title || "Untitled track") + "</a>" +
           '    <p class="text-[11px] text-slate-400 truncate">by ' + (track.artist || "Unknown artist") + "</p>" +
           "  </section>" +
           '  <section class="flex flex-col items-end text-right text-[10px] text-slate-400 gap-0.5">' +
@@ -548,6 +545,7 @@
       top50Container.setAttribute("aria-busy", "false");
     }
 
+    // --- Renderointi Latest ---
     function renderLatest() {
       if (!latestContainer) return;
       latestContainer.setAttribute("aria-busy", "true");
@@ -560,10 +558,10 @@
           '    <p class="text-[10px] uppercase tracking-[0.2em] text-sky-400">' + (rel.genre || "EDM") + "</p>" +
           '    <a href="' + (rel.url || "#") + '" target="_blank" rel="noopener noreferrer"' +
           '       class="block truncate text-slate-50 font-semibold hover:text-emerald-400">' +
-                 (rel.title || "Untitled track") + "</a>" +
+          (rel.title || "Untitled track") + "</a>" +
           '    <p class="text-[11px] text-slate-400 truncate">by ' + (rel.artist || "Unknown artist") + "</p>" +
           '    <p class="text-[10px] text-slate-500 mt-0.5">' +
-                (rel.uploaded_at || "") + "</p>" +
+          (rel.uploaded_at || "") + "</p>" +
           "  </section>" +
           '  <section class="flex flex-col items-end text-right gap-1 text-[10px] text-slate-400">' +
           '    <a href="' + (rel.url || "#") + '" target="_blank" rel="noopener noreferrer"' +
@@ -651,6 +649,30 @@
       }
     }
 
+    async function loadPlayer() {
+      if (!scPlayerBox) return;
+      try {
+        const data = await fetchJSON(PLAYER_ENDPOINT);
+        if (!data || !data.url) {
+          scPlayerBox.innerHTML =
+            '<p class="text-[11px] text-slate-400 px-3 py-2">Cannot load player, no valid latest track.</p>';
+          return;
+        }
+        const src =
+          "https://w.soundcloud.com/player/?url=" +
+          encodeURIComponent(data.url) +
+          "&color=%2322c55e&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true";
+
+        scPlayerBox.innerHTML =
+          '<iframe title="EDM VERSEX latest track" width="100%" height="260" scrolling="no" frameborder="no" allow="autoplay" src="' +
+          src + '"></iframe>';
+      } catch (err) {
+        console.error("Player load error", err);
+        scPlayerBox.innerHTML =
+          '<p class="text-[11px] text-slate-400 px-3 py-2">Error loading SoundCloud player.</p>';
+      }
+    }
+
     // Genre filter UI
     const filterButtons = document.querySelectorAll(".genre-filter-btn");
     filterButtons.forEach(function (btn) {
@@ -682,8 +704,9 @@
     // Initial load
     loadTop50();
     loadLatest();
+    loadPlayer();
 
-    // Immersive wave background
+    // Immersive wave tausta
     const canvas = document.getElementById("wave-canvas");
     if (canvas) {
       const ctx = canvas.getContext("2d");
