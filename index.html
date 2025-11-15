@@ -2,36 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>EDM VERSEX | Live SoundCloud Top 50 & Latest Releases</title>
+  <title>EDM VERSEX | Live SoundCloud Top 50 and Latest Releases</title>
 
+  <!-- Perusmeta ja mobiilituki -->
   <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 
   <meta name="description"
-        content="EDM VERSEX is a live EDM hub with SoundCloud-based Top 50 charts, auto-updated latest releases and immersive audio-inspired UI.">
+        content="EDM VERSEX is an independent EDM site with SoundCloud based Top 50 charts, automatically updated latest releases and human written guides for electronic dance music fans and producers.">
   <meta name="keywords"
-        content="EDM, electronic dance music, house, trance, techno, SoundCloud, Top 50, latest releases, charts, DJs, producers">
+        content="EDM, electronic dance music, house, trance, techno, SoundCloud, Top 50, latest releases, charts, DJ, producer, playlist">
   <meta name="author" content="EDM VERSEX">
+  <meta name="robots" content="index,follow">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="EDM VERSEX | Live SoundCloud Top 50 & Latest Releases">
+  <!-- Canonical ja Open Graph -->
+  <link rel="canonical" href="https://www.edmversex.com/">
+
+  <meta property="og:title" content="EDM VERSEX | Live SoundCloud Top 50 and Latest Releases">
   <meta property="og:description"
-        content="SoundCloud integrated EDM hub with live charts, latest tracks and immersive UI for fans and producers.">
+        content="A content rich EDM hub with live SoundCloud charts, latest releases and detailed guides for electronic music lovers.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://edmversex.com/">
-  <meta property="og:image" content="https://edmversex.com/assets/edmversex-cover.jpg">
+  <meta property="og:url" content="https://www.edmversex.com/">
+  <meta property="og:image" content="https://www.edmversex.com/assets/edmversex-cover.jpg">
 
-  <!-- Twitter -->
+  <!-- Twitter kortti -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="EDM VERSEX | Live SoundCloud Top 50 & Latest Releases">
+  <meta name="twitter:title" content="EDM VERSEX | Live SoundCloud Top 50 and Latest Releases">
   <meta name="twitter:description"
-        content="Live EDM hub with SoundCloud powered Top 50 & latest releases.">
+        content="Live EDM chart view, latest SoundCloud releases and in depth editorial content.">
 
-  <!-- Icons (voit vaihtaa polut) -->
+  <!-- Ikonit -->
   <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/icon-180.png">
 
-  <!-- Google AdSense -->
+  <!-- Google AdSense: pääkoodi head osiossa -->
   <script async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4201977277980522"
           crossorigin="anonymous"></script>
@@ -40,12 +44,12 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1KFLYZ78XS"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag("js", new Date());
     gtag("config", "G-1KFLYZ78XS");
   </script>
 
-  <!-- Tailwind (UI) -->
+  <!-- Tailwind CDN (ok kehityskäytössä) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -66,6 +70,7 @@
     };
   </script>
 
+  <!-- Taustatyyli ja fokus -->
   <style>
     html, body {
       max-width: 100%;
@@ -89,7 +94,25 @@
       mix-blend-mode: screen;
     }
   </style>
+
+  <!-- Structured data hakukoneita varten -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "EDM VERSEX",
+    "url": "https://www.edmversex.com/",
+    "description": "Independent EDM site with live charts, latest SoundCloud releases and editorial guides.",
+    "inLanguage": "en",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.edmversex.com/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
 </head>
+
 <body class="min-h-screen text-slate-50 antialiased bg-edm-bg relative">
 
 <a href="#main"
@@ -109,38 +132,55 @@
       </span>
       <span class="flex flex-col leading-tight">
         <span class="text-xs font-semibold tracking-[0.22em] uppercase text-emerald-400">EDM VERSEX</span>
-        <span class="text-[11px] text-slate-300/90">Live SoundCloud charts & latest releases</span>
+        <span class="text-[11px] text-slate-300/90">Live SoundCloud charts and written guides</span>
       </span>
     </a>
 
     <nav class="ml-auto hidden md:flex items-center gap-2 text-[11px]">
       <a href="#top50" class="px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700/80">Top 50</a>
       <a href="#latest" class="px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700/80">Latest 20</a>
-      <a href="#streams" class="px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700/80">Live & playlists</a>
+      <a href="#guides" class="px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700/80">Guides</a>
       <a href="#about" class="px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700/80">About</a>
     </nav>
   </nav>
 
-  <!-- Top banner ad -->
+  <!-- Yläbannerin mainos aidon sisällön vieressä -->
   <section class="mx-auto max-w-6xl px-4 pb-3">
-    <section class="rounded-2xl border border-slate-800 bg-slate-900/90 p-2 flex items-center justify-center">
-      <!-- Vaihda data-ad-slot omaan yksikköösi AdSensessä -->
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-4201977277980522"
-           data-ad-slot="1234567890"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
+    <section class="rounded-2xl border border-slate-800 bg-slate-900/90 p-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+      <section class="text-[11px] text-slate-300 flex-1 pr-2">
+        <p class="font-semibold text-slate-100">
+          Independent EDM hub that combines real content and carefully placed ads
+        </p>
+        <p class="mt-1">
+          Mainos näkyy tämän johdannon yhteydessä aidon sivustosisällön kanssa. Sivusto keskittyy
+          elektroniseen musiikkiin, joten mainokset kohdistuvat aiheeseen liittyviin tuotteisiin ja palveluihin.
+        </p>
+      </section>
+
+      <section class="flex-1">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-4201977277980522"
+             data-ad-slot="1234567890"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+          window.addEventListener("load", function () {
+            try {
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            } catch (e) {
+              console.warn("AdSense top banner error", e);
+            }
+          });
+        </script>
+      </section>
     </section>
   </section>
 </header>
 
 <main id="main" class="mx-auto max-w-6xl px-4 pt-4 pb-28 space-y-6">
 
-  <!-- HERO -->
+  <!-- HERO JA PÄÄSELOSTE -->
   <section id="top"
            class="rounded-3xl bg-edm-panel border border-slate-800 shadow-edm-soft p-4 sm:p-6 lg:p-7 relative overflow-hidden">
     <section class="absolute inset-0 pointer-events-none opacity-40">
@@ -154,33 +194,40 @@
           Live EDM dashboard
         </p>
         <h1 class="text-xl sm:text-2xl lg:text-3xl font-semibold text-slate-50">
-          Real-time SoundCloud charts, latest drops and immersive UI for electronic dance music.
+          Real time SoundCloud charts, fresh releases and long form editorial content for electronic dance music fans.
         </h1>
         <p class="text-sm sm:text-[15px] text-slate-300/90">
-          EDM VERSEX connects directly to SoundCloud via a secure Cloudflare backend.
-          The Top 50 and Latest sections below are updated automatically whenever your profile feed changes.
+          EDM VERSEX on itsenäinen sivusto joka yhdistää SoundCloudin ajantasaisen datan ja ihmisten kirjoittamat
+          artikkelit. Sivusto ei ole pelkkä lista linkkejä, vaan kokonainen katsaus siihen miten house, trance ja
+          muut EDM genret elävät juuri nyt. Lukija saa sekä soittolistat että rauhassa kirjoitetut taustatekstit
+          yhdestä paikasta.
+        </p>
+        <p class="text-sm sm:text-[15px] text-slate-300/90">
+          Tavoitteena on tarjota lukijalle selkeä ja rauhallinen käyttökokemus. Sivun eri osiot kuvaavat mitä tietoa
+          palvelu kerää SoundCloudista, miten listat muodostuvat ja millä tavalla sisältöön voi vaikuttaa. Mainokset
+          näkyvät vain näissä sisältörikkaissa näkymissä eivätkä korvaa tai peitä sisältöä.
         </p>
 
         <section class="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-3 text-[11px] sm:text-xs">
           <section class="rounded-2xl bg-slate-900/80 border border-slate-700/80 px-3 py-2">
             <p class="text-slate-400 uppercase tracking-[0.2em]">Now tracking</p>
             <p class="mt-1 text-slate-50 font-semibold" id="stat-track-count">–</p>
-            <p class="text-slate-400 mt-1">Total tracks scanned.</p>
+            <p class="text-slate-400 mt-1">Total tracks scanned from SoundCloud.</p>
           </section>
           <section class="rounded-2xl bg-slate-900/80 border border-slate-700/80 px-3 py-2">
             <p class="text-slate-400 uppercase tracking-[0.2em]">Latest update</p>
             <p class="mt-1 text-slate-50 font-semibold" id="stat-last-updated">–</p>
-            <p class="text-slate-400 mt-1">Local time of last refresh.</p>
+            <p class="text-slate-400 mt-1">Local time of the last refresh.</p>
           </section>
           <section class="rounded-2xl bg-slate-900/80 border border-slate-700/80 px-3 py-2">
-            <p class="text-slate-400 uppercase tracking-[0.2em]">Live mood</p>
+            <p class="text-slate-400 uppercase tracking-[0.2em]">Dominant genre</p>
             <p class="mt-1 text-slate-50 font-semibold" id="stat-dominant-genre">–</p>
-            <p class="text-slate-400 mt-1">Dominant genre in current Top 50.</p>
+            <p class="text-slate-400 mt-1">Main genre in the current Top 50 set.</p>
           </section>
         </section>
       </section>
 
-      <!-- Live playlist + genre filter -->
+      <!-- Live playlist ja filtteri -->
       <section class="flex-1 flex flex-col gap-3">
         <section
           class="rounded-2xl bg-slate-950/80 border border-slate-800 overflow-hidden shadow-inner flex flex-col">
@@ -190,18 +237,18 @@
                 SoundCloud live playlist
               </p>
               <p class="text-[11px] text-slate-300/90">
-                Listen while you explore the data below.
+                Listen while you read the articles and charts below.
               </p>
             </section>
           </header>
           <section id="sc-player" class="flex-1 min-h-[220px] flex items-center justify-center">
             <p class="text-[11px] text-slate-400">
-              Loading SoundCloud player…
+              Loading SoundCloud player.
             </p>
           </section>
         </section>
 
-        <!-- Genre filter -->
+        <!-- Genre filtteri -->
         <section class="rounded-2xl bg-slate-900/80 border border-slate-700/80 p-3">
           <p class="text-[11px] uppercase tracking-[0.22em] text-slate-400">
             Quick focus filter
@@ -229,7 +276,7 @@
             </button>
           </section>
           <p class="mt-1 text-[11px] text-slate-400">
-            Filter only affects highlighting in the Top 50 list.
+            Filtering highlights tracks in the Top 50 list and helps visitors focus on the styles they like most.
           </p>
         </section>
       </section>
@@ -242,11 +289,13 @@
     <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
       <section>
         <h2 class="text-sm sm:text-base font-semibold tracking-[0.25em] uppercase text-emerald-400">
-          Top 50 – SoundCloud based EDM / house / trance
+          Top 50 global EDM, house and trance tracks
         </h2>
         <p class="mt-1 text-xs sm:text-[13px] text-slate-300/90">
-          Ordered by play count and freshness. Data is fetched from a secure Cloudflare backend that talks to
-          SoundCloud using your API credentials.
+          This live chart calls a secure Cloudflare backend that uses official SoundCloud APIs.
+          The list is sorted by play count and recency which gives visitors a clear view of what is relevant at
+          the moment. Each entry links back to the original SoundCloud track so that artists keep full control
+          of their content.
         </p>
       </section>
       <section class="flex items-center gap-2 text-[11px]">
@@ -283,12 +332,52 @@
              aria-busy="false"
              id="top50-list">
       <section class="p-3 space-y-2" id="top50-skeleton">
-        <p class="text-[11px] text-slate-400">Loading live Top 50 from backend…</p>
+        <p class="text-[11px] text-slate-400">Loading live Top 50 from the backend.</p>
         <section class="animate-pulse space-y-2">
           <section class="h-10 rounded-xl bg-slate-800/60"></section>
           <section class="h-10 rounded-xl bg-slate-800/60"></section>
           <section class="h-10 rounded-xl bg-slate-800/60"></section>
         </section>
+      </section>
+    </section>
+  </section>
+
+  <!-- MAINOS SISÄLLÖN KESKELLÄ -->
+  <section class="rounded-3xl bg-slate-950/90 border border-slate-800/90 p-4 sm:p-5">
+    <header>
+      <h2 class="text-sm sm:text-base font-semibold tracking-[0.25em] uppercase text-emerald-400">
+        Support and responsible monetisation
+      </h2>
+    </header>
+    <section class="mt-2 grid gap-3 sm:grid-cols-3 items-center">
+      <section class="sm:col-span-2 text-[11px] sm:text-[13px] text-slate-300/90 space-y-1.5">
+        <p>
+          EDM VERSEX uses Google AdSense to cover hosting and development costs. Ads are always shown next to
+          real editorial content and never inside empty views. This respects both AdSense policy and reader
+          expectations.
+        </p>
+        <p>
+          Sivustoa päivitetään säännöllisesti ja sisältöä laajennetaan. Tavoitteena on, että jokainen vierailija
+          löytää täältä uusia kappaleita, inspiraatiota ja perustietoa EDM kentästä. Mainokset ovat vain pieni osa
+          kokonaisuutta, eivät koskaan sivun ainoa tarkoitus.
+        </p>
+      </section>
+      <section class="sm:col-span-1">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-4201977277980522"
+             data-ad-slot="0987654321"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+          window.addEventListener("load", function () {
+            try {
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            } catch (e) {
+              console.warn("AdSense mid content error", e);
+            }
+          });
+        </script>
       </section>
     </section>
   </section>
@@ -299,10 +388,12 @@
     <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
       <section>
         <h2 class="text-sm sm:text-base font-semibold tracking-[0.25em] uppercase text-emerald-400">
-          Latest 20 releases from your SoundCloud feed
+          Latest 20 global releases from SoundCloud
         </h2>
         <p class="mt-1 text-xs sm:text-[13px] text-slate-300/90">
-          Always in sync with SoundCloud. The newest uploads appear here automatically, sorted by upload date.
+          The latest section highlights the most recent public uploads in the selected EDM genres. This view is
+          useful when visitors want to discover completely new tracks instead of familiar hits. Every row contains
+          clear information about title, artist, genre and upload time.
         </p>
       </section>
       <section class="flex items-center gap-2 text-[11px]">
@@ -320,7 +411,7 @@
              aria-live="polite"
              aria-busy="false">
       <section class="p-3 space-y-2" id="latest-skeleton">
-        <p class="text-[11px] text-slate-400">Loading latest releases from backend…</p>
+        <p class="text-[11px] text-slate-400">Loading latest releases from the backend.</p>
         <section class="animate-pulse space-y-2">
           <section class="h-12 rounded-xl bg-slate-800/60"></section>
           <section class="h-12 rounded-xl bg-slate-800/60"></section>
@@ -329,57 +420,68 @@
     </section>
   </section>
 
-  <!-- STREAMS / EDITORIAL TEXT -->
-  <section id="streams"
-           class="rounded-3xl bg-edm-glass border border-slate-800/80 backdrop-blur-2xl p-4 sm:p-6 space-y-3">
+  <!-- GUIDES JA EDITORIAALI -->
+  <section id="guides"
+           class="rounded-3xl bg-edm-glass border border-slate-800/80 backdrop-blur-2xl p-4 sm:p-6 space-y-4">
     <header>
       <h2 class="text-sm sm:text-base font-semibold tracking-[0.25em] uppercase text-emerald-400">
-        Live streams & editorial notes
+        Guides for new listeners and producers
       </h2>
       <p class="mt-1 text-xs sm:text-[13px] text-slate-300/90">
-        This section adds human-written context to the automatically updated charts. That combination of
-        real editorial text and data-driven lists is exactly what AdSense policy expects from a high-quality site.
+        Tämä osio sisältää käsin kirjoitettuja artikkeleita jotka täydentävät automaattisia listoja. Tarkoitus on
+        auttaa kävijää ymmärtämään mitä listat kertovat, miten kappaleita kuunnellaan vastuullisesti ja miten
+        aloitteleva tekijä voi hyödyntää SoundCloudia omassa työssään.
       </p>
     </header>
 
     <section class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-      <section class="rounded-2xl bg-slate-950/80 border border-slate-800 overflow-hidden">
-        <header class="p-3 border-b border-slate-800">
-          <p class="text-[11px] uppercase tracking-[0.22em] text-emerald-400">
-            Listening guide
-          </p>
-        </header>
-        <section class="p-3 text-[11px] text-slate-300/90 space-y-1">
-          <p>
-            Start with the latest releases list if you want a quick snapshot of what has just dropped on the
-            SoundCloud profile. For a longer session, switch to the Top 50 chart and shuffle through the most
-            played tracks.
-          </p>
-          <p>
-            The live playlist above loads the most recent upload into an embedded SoundCloud player.
-            This keeps the front page feeling alive without requiring manual updates whenever a new track is released.
-          </p>
-        </section>
-      </section>
+      <article class="rounded-2xl bg-slate-950/80 border border-slate-800 p-4 space-y-2 text-sm sm:text-[13px] text-slate-300/90">
+        <h3 class="text-[13px] font-semibold text-emerald-400 uppercase tracking-[0.2em]">
+          Reading the Top 50 chart
+        </h3>
+        <p>
+          Top 50 list on yhdistelmä soittojen määrää ja kappaleen tuoreutta. Korkealle sijoittuvat kappaleet ovat
+          yleensä saaneet poikkeuksellisen paljon huomiota lyhyessä ajassa tai pysyvät suosittuina pidempään.
+          Listaa voi käyttää inspiraation lähteenä tai vertailukohtana omalle tuotannolle.
+        </p>
+        <p>
+          Kun tarkastelet yksittäistä kappaletta, kiinnitä huomiota artistin nimeen ja genreen. Näiden avulla löydät
+          lisää saman tekijän tuotantoa SoundCloudista. Jokaisessa rivissä on suora linkki alkuperäiseen kappaleeseen,
+          mikä kunnioittaa tekijänoikeuksia ja koko ekosysteemiä.
+        </p>
+      </article>
 
-      <section class="rounded-2xl bg-slate-950/80 border border-slate-800 overflow-hidden">
-        <header class="p-3 border-b border-slate-800">
-          <p class="text-[11px] uppercase tracking-[0.22em] text-sky-400">
-            Ads & experience
-          </p>
-        </header>
-        <section class="p-3 text-[11px] text-slate-300/90 space-y-1">
-          <p>
-            Display ads appear only inside rich content views such as the header area and long-form sections,
-            never on empty or purely navigational screens. This layout respects AdSense policies on
-            publisher content and ad placement.
-          </p>
-          <p>
-            Analytics is used to understand which sections visitors prefer and to optimise the order of content blocks
-            for a smoother, more immersive experience.
-          </p>
-        </section>
-      </section>
+      <article class="rounded-2xl bg-slate-950/80 border border-slate-800 p-4 space-y-2 text-sm sm:text-[13px] text-slate-300/90">
+        <h3 class="text-[13px] font-semibold text-sky-400 uppercase tracking-[0.2em]">
+          Using latest releases for discovery
+        </h3>
+        <p>
+          Latest 20 lista näyttää mitä uutta on juuri ilmestynyt. Tämä näkymä sopii kuuntelijoille jotka haluavat
+          löytää tuntemattomia tekijöitä ja pieniä labeleita. Kun selaat listaa, kokeile hypätä rohkeasti otsikoihin
+          jotka eivät näytä tutuilta. Näin EDM maailma laajenee oman mukavuusalueen ulkopuolelle.
+        </p>
+        <p>
+          Tuoreiden julkaisujen seuraaminen auttaa myös tuottajia. Näet miten miksaukset, soundit ja rakenteet
+          muuttuvat ajan myötä. Voit tehdä muistiinpanoja siitä millaiset kappaleet nousevat soittomäärissä ja mitä
+          elementtejä niillä on yhteistä.
+        </p>
+      </article>
+    </section>
+
+    <section class="rounded-2xl bg-slate-950/80 border border-slate-800 p-4 space-y-2 text-sm sm:text-[13px] text-slate-300/90">
+      <h3 class="text-[13px] font-semibold text-fuchsia-400 uppercase tracking-[0.2em]">
+        How this site handles data and monetisation
+      </h3>
+      <p>
+        Sivusto käyttää SoundCloudin avointa rajapintaa eikä tallenna kappaleita paikallisesti. Kaikki linkit johtavat
+        takaisin alkuperäisiin profiileihin ja soittolistoihin. Google Analytics mittaa anonyymisti sitä miten sivua
+        käytetään jotta rakenteesta voidaan tehdä selkeämpi ja nopeampi tulevaisuudessa.
+      </p>
+      <p>
+        Google AdSense vastaa mainosten toimittamisesta. Mainosyksiköt sijoitetaan vain sisältöosuuksien yhteyteen eikä
+        erillisille tyhjille sivuille. Jos käyttäjä haluaa lukea artikkeleita ilman jatkuvaa mainoskuormaa, layout on
+        rakennettu niin, että teksti ja taulukot ovat aina etusijalla.
+      </p>
     </section>
   </section>
 
@@ -393,29 +495,31 @@
     </header>
     <section class="space-y-2 text-sm sm:text-[15px] leading-relaxed text-slate-300/90">
       <p>
-        EDM VERSEX is designed as an independent, content-rich outlet for electronic dance music fans and producers.
-        It uses live SoundCloud data combined with written commentary to highlight tracks, artists and moods.
+        EDM VERSEX is created for people who enjoy electronic dance music and want one place that combines live
+        charts and written explanations. The site focuses on clarity, accessibility and responsible use of data.
+        The layout is touch friendly, works on phones and tablets and avoids horizontal scrolling.
       </p>
       <p>
-        All SoundCloud API credentials are stored securely on the server side using Cloudflare Workers secrets,
-        never inside the public HTML or JavaScript. This allows the charts to stay fresh while keeping your account
-        safe.
+        Sivuston taustalla on ajatus siitä, että pelkkä automaattinen lista ei riitä. Tarvitaan myös ihmiseltä
+        ihmiselle kirjoitettua sisältöä jossa kerrotaan miksi jokin kappale on kiinnostava ja mihin genreihin se
+        liittyy. Tämän vuoksi jokaisen teknisen näkymän rinnalla on tekstiosio joka avaa sen merkitystä.
       </p>
       <p>
-        If you run labels, podcasts or events, this page can also act as a central landing page where new listeners
-        discover your sound and advertisers reach a focused audience of EDM fans.
+        If you run labels, podcasts or events, this page can act as a neutral landing zone where listeners discover
+        your sound and advertisers can reach a focused audience. Collaboration ideas and feedback are welcome
+        through the contact channels that will be added to a separate page.
       </p>
     </section>
   </section>
 </main>
 
-<!-- FOOTER / NAV -->
+<!-- FOOTER JA NAVIGAATIO -->
 <footer class="fixed bottom-0 left-0 right-0 z-40">
   <section class="mx-auto max-w-6xl px-4 pb-[env(safe-area-inset-bottom)]">
     <section
       class="rounded-2xl bg-slate-950/95 border border-slate-800/90 backdrop-blur-xl shadow-edm-soft px-3 py-2 flex flex-col gap-1">
       <section class="flex items-center justify-between gap-2 text-[10px] text-slate-400">
-        <p>© <span id="year"></span> EDM VERSEX · Live EDM hub</p>
+        <p>© <span id="year"></span> EDM VERSEX. Independent EDM hub.</p>
         <a href="#top" class="underline">Back to top</a>
       </section>
       <section class="flex items-center justify-between text-[11px]">
@@ -428,13 +532,13 @@
              class="px-2 py-1 rounded-xl bg-slate-900/80 border border-slate-700/80 flex items-center gap-1">
             <span aria-hidden="true">🆕</span><span>Latest</span>
           </a>
-          <a href="#streams"
+          <a href="#guides"
              class="px-2 py-1 rounded-xl bg-slate-900/80 border border-slate-700/80 flex items-center gap-1">
-            <span aria-hidden="true">🎧</span><span>Streams</span>
+            <span aria-hidden="true">📚</span><span>Guides</span>
           </a>
         </nav>
         <a href="privacy.html" class="text-[10px] underline">
-          Privacy & cookies
+          Privacy and cookies
         </a>
       </section>
     </section>
@@ -444,18 +548,19 @@
 <noscript>
   <section class="mx-auto max-w-6xl mt-4 px-4">
     <section class="rounded-2xl bg-red-900/80 text-red-100 p-3 text-xs">
-      JavaScript is disabled. Live charts and latest releases cannot be loaded, but static information still works.
+      JavaScript is disabled in your browser. Live charts and SoundCloud features cannot be loaded.
+      Static information and editorial content is still available.
     </section>
   </section>
 </noscript>
 
-<!-- APP LOGIC -->
+<!-- APP LOGIIKKA -->
 <script>
   (function () {
     "use strict";
 
-    // VAIHDA TÄMÄ OMAAN WORKER-OSOITTEESEESI
-    const WORKER_BASE = "https://royal-union-d5f0.kalleuusitalo1.workers.dev"; //
+    // Worker osoite. ei vinoviivaa lopussa
+    const WORKER_BASE = "https://royal-union-d5f0.kalleuusitalo1.workers.dev";
 
     const TOP_50_ENDPOINT = WORKER_BASE + "/api/top50";
     const LATEST_ENDPOINT = WORKER_BASE + "/api/latest";
@@ -491,8 +596,8 @@
     function formatNumber(n) {
       if (typeof n !== "number") n = Number(n || 0);
       if (Number.isNaN(n)) return "-";
-      if (n >= 1_000_000) return (n / 1_000_000).toFixed(1) + "M";
-      if (n >= 1_000) return (n / 1_000).toFixed(1) + "k";
+      if (n >= 1000000) return (n / 1000000).toFixed(1) + "M";
+      if (n >= 1000) return (n / 1000).toFixed(1) + "k";
       return n.toString();
     }
     function normalizeGenre(genre) {
@@ -503,7 +608,7 @@
       return "other";
     }
 
-    // --- Renderointi Top 50 ---
+    // Top 50 renderointi
     function renderTop50() {
       if (!top50Container) return;
       top50Container.setAttribute("aria-busy", "true");
@@ -545,7 +650,7 @@
       top50Container.setAttribute("aria-busy", "false");
     }
 
-    // --- Renderointi Latest ---
+    // Latest renderointi
     function renderLatest() {
       if (!latestContainer) return;
       latestContainer.setAttribute("aria-busy", "true");
@@ -616,7 +721,7 @@
 
     async function loadTop50() {
       try {
-        setText(top50Status, "Loading…");
+        setText(top50Status, "Loading.");
         const data = await fetchJSON(TOP_50_ENDPOINT);
         if (!Array.isArray(data) || data.length === 0) {
           setText(top50Status, "No data from backend");
@@ -634,7 +739,7 @@
 
     async function loadLatest() {
       try {
-        setText(latestStatus, "Loading…");
+        setText(latestStatus, "Loading.");
         const data = await fetchJSON(LATEST_ENDPOINT);
         if (!Array.isArray(data) || data.length === 0) {
           setText(latestStatus, "No latest releases");
@@ -655,24 +760,24 @@
         const data = await fetchJSON(PLAYER_ENDPOINT);
         if (!data || !data.url) {
           scPlayerBox.innerHTML =
-            '<p class="text-[11px] text-slate-400 px-3 py-2">Cannot load player, no valid latest track.</p>';
+            '<p class="text-[11px] text-slate-400 px-3 py-2">Cannot load player. No valid latest track.</p>';
           return;
         }
         const src =
-  "https://w.soundcloud.com/player/?url=" +
-  encodeURIComponent(data.url) +
-  "&color=%2322c55e&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true";
+          "https://w.soundcloud.com/player/?url=" +
+          encodeURIComponent(data.url) +
+          "&color=%2322c55e&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true";
 
-scPlayerBox.innerHTML = `
-    <iframe 
-        title="EDM VERSEX latest track"
-        width="100%" 
-        height="260" 
-        scrolling="no" 
-        frameborder="no" 
-        allow="autoplay"
-        src="${src}">
-    </iframe>`;
+        scPlayerBox.innerHTML = `
+          <iframe
+              title="EDM VERSEX latest track"
+              width="100%"
+              height="260"
+              scrolling="no"
+              frameborder="no"
+              allow="autoplay"
+              src="${src}">
+          </iframe>`;
       } catch (err) {
         console.error("Player load error", err);
         scPlayerBox.innerHTML =
@@ -680,7 +785,7 @@ scPlayerBox.innerHTML = `
       }
     }
 
-    // Genre filter UI
+    // Genre filtteri
     const filterButtons = document.querySelectorAll(".genre-filter-btn");
     filterButtons.forEach(function (btn) {
       btn.addEventListener("click", function () {
@@ -698,22 +803,22 @@ scPlayerBox.innerHTML = `
       });
     });
 
-    // Footer year
+    // Vuosi footerissa
     const yearSpan = document.getElementById("year");
     if (yearSpan) {
       yearSpan.textContent = new Date().getFullYear();
     }
 
-    // Buttons
+    // Nappien toiminnallisuus
     if (btnRefreshTop) btnRefreshTop.addEventListener("click", loadTop50);
     if (btnRefreshLatest) btnRefreshLatest.addEventListener("click", loadLatest);
 
-    // Initial load
+    // Ensilataus
     loadTop50();
     loadLatest();
     loadPlayer();
 
-    // Immersive wave tausta
+    // Tausta animaatio
     const canvas = document.getElementById("wave-canvas");
     if (canvas) {
       const ctx = canvas.getContext("2d");
