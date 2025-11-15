@@ -418,41 +418,36 @@
 
 <!-- FOOTER / NAV + BOTTOM AD -->
 <footer class="fixed bottom-0 left-0 right-0 z-40">
-  <section class="mx-auto max-w-6xl px-4 pb-[env(safe-area-inset-bottom)]">
+  <section class="mx-auto max-w-6xl px-2 pb-[env(safe-area-inset-bottom)]">
     <section
-      class="rounded-2xl bg-slate-950/95 border border-slate-800/90 backdrop-blur-xl shadow-edm-soft px-3 py-2 flex flex-col gap-2">
-      <!-- Bottom ad -->
-      <section class="min-h-[70px]">
-        <!-- ANCHOR/BOTTOM DISPLAY AD -->
-        <ins class="adsbygoogle bottom-ad"
-             style="display:block; width:100%; min-height:70px"
-             data-ad-client="ca-pub-4201977277980522"
-             data-ad-slot="6677889900"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-      </section>
+      class="rounded-xl bg-slate-950/95 border border-slate-800/80 backdrop-blur-xl shadow-edm-soft px-2 py-1 flex items-center justify-between gap-2">
+      
+      <!-- Vasen puoli: nav-painikkeet -->
+      <nav class="flex items-center gap-1.5 text-[11px]">
+        <a href="#top50"
+           class="px-2 py-1 rounded-lg bg-slate-900/80 border border-slate-700/80 flex items-center gap-1">
+          <span aria-hidden="true">📈</span><span class="hidden sm:inline">Top 50</span>
+        </a>
+        <a href="#latest"
+           class="px-2 py-1 rounded-lg bg-slate-900/80 border border-slate-700/80 flex items-center gap-1">
+          <span aria-hidden="true">🆕</span><span class="hidden sm:inline">Latest</span>
+        </a>
+        <a href="#streams"
+           class="px-2 py-1 rounded-lg bg-slate-900/80 border border-slate-700/80 flex items-center gap-1">
+          <span aria-hidden="true">🎧</span><span class="hidden sm:inline">Streams</span>
+        </a>
+      </nav>
 
-      <section class="flex items-center justify-between gap-2 text-[10px] text-slate-400">
-        <p>© <span id="year"></span> EDM VERSEX · Global electronic dance music hub</p>
-        <a href="#top" class="underline">Back to top</a>
-      </section>
-      <section class="flex items-center justify-between text-[11px]">
-        <nav class="flex items-center gap-1.5">
-          <a href="#top50"
-             class="px-2 py-1 rounded-xl bg-slate-900/80 border border-slate-700/80 flex items-center gap-1">
-            <span aria-hidden="true">📈</span><span>Top 50</span>
-          </a>
-          <a href="#latest"
-             class="px-2 py-1 rounded-xl bg-slate-900/80 border border-slate-700/80 flex items-center gap-1">
-            <span aria-hidden="true">🆕</span><span>Latest</span>
-          </a>
-          <a href="#editorial"
-             class="px-2 py-1 rounded-xl bg-slate-900/80 border border-slate-700/80 flex items-center gap-1">
-            <span aria-hidden="true">📝</span><span>Editorial</span>
-          </a>
-        </nav>
-        <a href="privacy.html" class="text-[10px] underline">
-          Privacy & cookies
+      <!-- Oikea puoli: pieni info -->
+      <section class="flex items-center gap-2 text-[10px] text-slate-400">
+        <p class="hidden sm:inline">
+          © <span id="year"></span> EDM VERSEX
+        </p>
+        <a href="privacy.html" class="underline hidden sm:inline">
+          Privacy
+        </a>
+        <a href="#top" class="underline">
+          ↑
         </a>
       </section>
     </section>
