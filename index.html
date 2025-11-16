@@ -2,38 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>EDM VERSEX | Daily SoundCloud EDM Charts and Latest Tracks</title>
+  <title>EDM VERSEX | Global EDM Charts, Fresh Tracks & Community Picks</title>
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 
-  <meta name="description"
-        content="EDM VERSEX is a daily hub for electronic dance music with live SoundCloud based Top 50 charts, latest tracks, rising artists and editorial insights for DJs, producers and fans.">
-  <meta name="keywords"
-        content="EDM, electronic dance music, house, trance, techno, SoundCloud charts, latest tracks, DJs, producers, club music">
+  <meta name="description" content="EDM VERSEX is a daily electronic music hub with global SoundCloud-based charts, fresh EDM tracks, news and community-voted favourites.">
+  <meta name="keywords" content="EDM, electronic dance music, house, trance, techno, SoundCloud charts, latest tracks, EDM news, DJ, producer">
   <meta name="author" content="EDM VERSEX">
 
-  <meta property="og:title" content="EDM VERSEX | Daily EDM SoundCloud Hub">
-  <meta property="og:description"
-        content="Discover daily SoundCloud based Top 50 tracks, fresh EDM releases, rising artists and scene insights in one immersive interface.">
+  <meta property="og:title" content="EDM VERSEX | Global EDM Charts, Fresh Tracks & Community Picks">
+  <meta property="og:description" content="Follow global EDM, house and trance with daily updated charts, fresh tracks, news and community-voted favourites.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://edmversex.com/">
   <meta property="og:image" content="https://edmversex.com/assets/edmversex-cover.jpg">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="EDM VERSEX | Daily EDM SoundCloud Hub">
-  <meta name="twitter:description"
-        content="Daily updated EDM SoundCloud charts, latest tracks, rising artists and editorial insight.">
+  <meta name="twitter:title" content="EDM VERSEX | Global EDM Charts, Fresh Tracks & Community Picks">
+  <meta name="twitter:description" content="Daily EDM charts, new tracks, news and community favourites in one immersive experience.">
 
   <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/icon-180.png">
 
-  <!-- Google AdSense -->
-  <script async
-          src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-4201977277980522"
-          crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4201977277980522" crossorigin="anonymous"></script>
 
-  <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1KFLYZ78XS"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -42,7 +33,6 @@
     gtag("config", "G-1KFLYZ78XS");
   </script>
 
-  <!-- Tailwind via CDN (riittää nyt, halutessa voi myöhemmin siirtää buildiin) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -53,10 +43,11 @@
             "edm-panel": "rgba(15,23,42,0.96)",
             "edm-glass": "rgba(15,23,42,0.82)",
             "edm-accent": "#22c55e",
+            "edm-accent-soft": "#4ade80",
             "edm-highlight": "#38bdf8"
           },
           boxShadow: {
-            "edm-soft": "0 28px 80px rgba(15,23,42,0.92)"
+            "edm-soft": "0 26px 70px rgba(15,23,42,0.92)"
           }
         }
       }
@@ -68,493 +59,326 @@
       max-width: 100%;
       overflow-x: hidden;
       scroll-behavior: smooth;
-      background: radial-gradient(circle at top, #0f172a 0, #020617 45%, #000 100%);
+      background: radial-gradient(circle at top, #0f172a 0, #020617 50%, #000 100%);
     }
     :focus-visible {
       outline: 2px solid #22c55e;
       outline-offset: 3px;
     }
-    #bg-waves {
+    #bg-canvas {
       position: fixed;
       inset: 0;
       width: 100%;
       height: 100%;
       pointer-events: none;
-      opacity: 0.6;
+      opacity: 0.55;
       mix-blend-mode: screen;
       z-index: 0;
     }
+    main {
+      position: relative;
+      z-index: 1;
+    }
   </style>
 </head>
-<body class="min-h-screen text-slate-50 antialiased bg-edm-bg relative">
+<body class="min-h-screen text-slate-50 antialiased bg-edm-bg">
 
-<a href="#main"
-   class="sr-only focus:not-sr-only focus:fixed focus:z-50 focus:top-3 focus:left-3 focus:px-4 focus:py-2 focus:rounded-full focus:bg-slate-900 focus:text-emerald-400">
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:z-50 focus:top-3 focus:left-3 focus:px-4 focus:py-2 focus:rounded-full focus:bg-slate-950 focus:text-emerald-400">
   Skip to main content
 </a>
 
-<canvas id="bg-waves"></canvas>
+<canvas id="bg-canvas"></canvas>
 
 <header class="sticky top-0 z-30 backdrop-blur-2xl bg-slate-950/90 border-b border-slate-800/80">
   <nav class="mx-auto max-w-6xl px-4 py-3 flex items-center gap-3">
     <a href="#top" class="flex items-center gap-2" aria-label="EDM VERSEX home">
-      <span
-        class="inline-flex h-9 w-9 rounded-full bg-gradient-to-tr from-emerald-500 via-sky-500 to-fuchsia-500 items-center justify-center shadow-lg shadow-emerald-500/40">
+      <span class="inline-flex h-9 w-9 rounded-full bg-gradient-to-tr from-emerald-500 via-sky-500 to-fuchsia-500 items-center justify-center shadow-lg shadow-emerald-500/50">
         <span class="h-3 w-3 rounded-full bg-slate-950"></span>
       </span>
       <span class="flex flex-col leading-tight">
         <span class="text-xs font-semibold tracking-[0.22em] uppercase text-emerald-400">EDM VERSEX</span>
-        <span class="text-[11px] text-slate-300/90">Daily SoundCloud based EDM hub</span>
+        <span class="text-[11px] text-slate-300/90">Global EDM charts & fresh tracks</span>
       </span>
     </a>
-
     <nav class="ml-auto hidden md:flex items-center gap-2 text-[11px]">
-      <a href="#top" class="px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700/80">Overview</a>
-      <a href="#top50" class="px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700/80">Top 50</a>
-      <a href="#latest" class="px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700/80">Latest</a>
-      <a href="#artists" class="px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700/80">Artists</a>
+      <a href="#charts" class="px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700/80">Charts</a>
+      <a href="#latest" class="px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700/80">New tracks</a>
+      <a href="#community" class="px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700/80">Community picks</a>
+      <a href="#news" class="px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700/80">News</a>
       <a href="#about" class="px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700/80">About</a>
     </nav>
   </nav>
-
   <section class="mx-auto max-w-6xl px-4 pb-3">
-    <section class="rounded-2xl border border-slate-800 bg-slate-900/90 p-2 flex items-center justify-center">
+    <section class="rounded-2xl border border-slate-800 bg-slate-900/95 p-2 flex items-center justify-center min-h-[70px]">
       <ins class="adsbygoogle"
-           style="display:block"
+           style="display:block;width:100%;min-height:60px"
            data-ad-client="ca-pub-4201977277980522"
            data-ad-slot="1234567890"
            data-ad-format="auto"
            data-full-width-responsive="true"></ins>
+      <script>
+        if (window.adsbygoogle) {
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        }
+      </script>
     </section>
   </section>
 </header>
 
-<main id="main" class="mx-auto max-w-6xl px-4 pt-4 pb-16 space-y-6 relative z-10">
-
-  <!-- HERO / SNAPSHOT -->
-  <section id="top"
-           class="rounded-3xl bg-edm-panel border border-slate-800 shadow-edm-soft p-4 sm:p-6 lg:p-7 relative overflow-hidden">
+<main id="main" class="mx-auto max-w-6xl px-4 pt-4 pb-24 space-y-6" aria-live="polite">
+  <section id="top" class="rounded-3xl bg-edm-panel border border-slate-800 shadow-edm-soft p-4 sm:p-6 lg:p-7 relative overflow-hidden">
     <section class="absolute inset-0 pointer-events-none opacity-40">
       <section class="absolute -top-10 -left-10 w-40 h-40 rounded-full bg-emerald-500 blur-3xl"></section>
       <section class="absolute -bottom-16 -right-16 w-56 h-56 rounded-full bg-sky-500 blur-3xl"></section>
     </section>
-
-    <section class="relative flex flex-col lg:flex-row gap-6 lg:gap-10">
-      <section class="flex-1 space-y-3">
-        <p class="text-[11px] font-semibold tracking-[0.25em] uppercase text-emerald-400">
-          Daily club intelligence
-        </p>
+    <section class="relative grid gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] items-start">
+      <section class="space-y-3">
+        <p class="text-[11px] font-semibold tracking-[0.25em] uppercase text-emerald-400">Daily EDM pulse</p>
         <h1 class="text-xl sm:text-2xl lg:text-3xl font-semibold text-slate-50">
-          See how electronic dance music moves today across SoundCloud and the global club scene.
+          A daily view into global EDM, house and trance with charts, fresh tracks and community favourites.
         </h1>
-        <p class="text-sm sm:text-[15px] text-slate-300/90" id="editorial-text">
-          Loading today’s EDM snapshot from the hub.
+        <p class="text-sm sm:text-[15px] text-slate-300/90">
+          Open EDM VERSEX once per day to see which sounds are climbing, which tracks have just arrived and which tunes listeners keep voting to the top.
         </p>
-
         <section class="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-3 text-[11px] sm:text-xs">
           <section class="rounded-2xl bg-slate-900/80 border border-slate-700/80 px-3 py-2">
             <p class="text-slate-400 uppercase tracking-[0.2em]">Tracks in focus</p>
             <p class="mt-1 text-slate-50 font-semibold" id="stat-track-count">–</p>
-            <p class="text-slate-400 mt-1">Entries in today’s snapshot.</p>
+            <p class="mt-1 text-slate-400">Total tracks in today’s snapshot.</p>
           </section>
           <section class="rounded-2xl bg-slate-900/80 border border-slate-700/80 px-3 py-2">
-            <p class="text-slate-400 uppercase tracking-[0.2em]">Last update</p>
+            <p class="text-slate-400 uppercase tracking-[0.2em]">Updated</p>
             <p class="mt-1 text-slate-50 font-semibold" id="stat-last-updated">–</p>
-            <p class="text-slate-400 mt-1">Time of last refresh.</p>
+            <p class="mt-1 text-slate-400">Local time of last refresh.</p>
           </section>
           <section class="rounded-2xl bg-slate-900/80 border border-slate-700/80 px-3 py-2">
-            <p class="text-slate-400 uppercase tracking-[0.2em]">Dominant energy</p>
+            <p class="text-slate-400 uppercase tracking-[0.2em]">Dominant mood</p>
             <p class="mt-1 text-slate-50 font-semibold" id="stat-dominant-genre">–</p>
-            <p class="text-slate-400 mt-1">Leading genre in the Top 50.</p>
+            <p class="mt-1 text-slate-400">Leading style in the current Top 50.</p>
+          </section>
+        </section>
+      </section>
+      <section class="space-y-3">
+        <section class="rounded-2xl bg-slate-950/80 border border-slate-800 p-3 flex flex-col gap-3">
+          <section class="flex items-center justify-between">
+            <p class="text-[11px] uppercase tracking-[0.22em] text-emerald-400">Focus filter</p>
+            <p class="text-[10px] text-slate-400">Highlights tracks that match your mood in the chart below.</p>
+          </section>
+          <section class="flex flex-wrap gap-1.5 text-[11px]">
+            <button data-genre-filter="all" class="genre-filter-btn px-3 py-1.5 rounded-full bg-emerald-500 text-slate-950 font-semibold">All</button>
+            <button data-genre-filter="house" class="genre-filter-btn px-3 py-1.5 rounded-full bg-slate-950/80 border border-slate-700/80 text-slate-100">House</button>
+            <button data-genre-filter="trance" class="genre-filter-btn px-3 py-1.5 rounded-full bg-slate-950/80 border border-slate-700/80 text-slate-100">Trance</button>
+            <button data-genre-filter="techno" class="genre-filter-btn px-3 py-1.5 rounded-full bg-slate-950/80 border border-slate-700/80 text-slate-100">Techno</button>
+            <button data-genre-filter="other" class="genre-filter-btn px-3 py-1.5 rounded-full bg-slate-950/80 border border-slate-700/80 text-slate-100">Other</button>
+          </section>
+        </section>
+        <section class="rounded-2xl bg-slate-950/90 border border-slate-800 p-3">
+          <p class="text-[11px] uppercase tracking-[0.22em] text-sky-400">Today’s flavour</p>
+          <p class="mt-1 text-[13px] text-slate-200" id="hero-summary">
+            Loading today’s snapshot of global club sound.
+          </p>
+        </section>
+      </section>
+    </section>
+  </section>
+
+  <section class="grid gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] items-start" id="charts">
+    <section class="space-y-6">
+      <section class="rounded-3xl bg-edm-glass border border-slate-800/80 backdrop-blur-2xl p-4 sm:p-6 space-y-3">
+        <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <section>
+            <h2 class="text-sm sm:text-base font-semibold tracking-[0.25em] uppercase text-emerald-400">Top 50 global club tracks</h2>
+            <p class="mt-1 text-xs sm:text-[13px] text-slate-300/90">
+              A blend of high-play EDM, house and trance that currently drives clubs and festivals around the world.
+            </p>
+          </section>
+          <section class="flex items-center gap-2 text-[11px]">
+            <button id="btn-refresh-top" type="button" class="px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700/80 text-slate-100">
+              Refresh view
+            </button>
+            <p id="top50-status" class="text-slate-400"></p>
+          </section>
+        </header>
+        <section class="mt-2 grid grid-cols-2 sm:grid-cols-4 gap-2 text-[11px] text-slate-300">
+          <section class="rounded-xl bg-slate-950/80 border border-slate-800 p-2">
+            <p class="uppercase tracking-[0.2em] text-slate-500">Most played track</p>
+            <p id="stat-top-track" class="mt-1 text-slate-50 font-semibold truncate">–</p>
+          </section>
+          <section class="rounded-xl bg-slate-950/80 border border-slate-800 p-2">
+            <p class="uppercase tracking-[0.2em] text-slate-500">Leading artist</p>
+            <p id="stat-top-artist" class="mt-1 text-slate-50 font-semibold truncate">–</p>
+          </section>
+          <section class="rounded-xl bg-slate-950/80 border border-slate-800 p-2">
+            <p class="uppercase tracking-[0.2em] text-slate-500">Average plays</p>
+            <p id="stat-avg-plays" class="mt-1 text-slate-50 font-semibold">–</p>
+          </section>
+          <section class="rounded-xl bg-slate-950/80 border border-slate-800 p-2">
+            <p class="uppercase tracking-[0.2em] text-slate-500">Styles represented</p>
+            <p id="stat-genre-count" class="mt-1 text-slate-50 font-semibold">–</p>
+          </section>
+        </section>
+        <section class="mt-3 rounded-2xl bg-slate-950/80 border border-slate-800/90 max-h-[440px] overflow-y-auto" id="top50-list" aria-busy="false">
+          <section class="p-3 space-y-2" id="top50-skeleton">
+            <p class="text-[11px] text-slate-400">Loading global Top 50.</p>
+            <section class="animate-pulse space-y-2">
+              <section class="h-10 rounded-xl bg-slate-800/60"></section>
+              <section class="h-10 rounded-xl bg-slate-800/60"></section>
+              <section class="h-10 rounded-xl bg-slate-800/60"></section>
+            </section>
           </section>
         </section>
       </section>
 
-      <section class="flex-1 flex flex-col gap-3">
-        <section class="rounded-2xl bg-slate-950/90 border border-slate-800 p-3 space-y-2">
-          <p class="text-[11px] uppercase tracking-[0.22em] text-slate-400">
-            Quick focus filter
-          </p>
-          <section class="flex flex-wrap gap-1.5 text-[11px]" id="genre-filter-bar">
-            <button data-genre="all"
-                    class="genre-filter-btn px-3 py-1.5 rounded-full bg-emerald-500 text-slate-950 font-semibold">
-              All
-            </button>
-            <button data-genre="house"
-                    class="genre-filter-btn px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700/80">
-              House
-            </button>
-            <button data-genre="trance"
-                    class="genre-filter-btn px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700/80">
-              Trance
-            </button>
-            <button data-genre="techno"
-                    class="genre-filter-btn px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700/80">
-              Techno
-            </button>
-            <button data-genre="other"
-                    class="genre-filter-btn px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700/80">
-              Other
-            </button>
+      <section id="latest" class="rounded-3xl bg-edm-panel border border-slate-800 shadow-edm-soft p-4 sm:p-6 space-y-3">
+        <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <section>
+            <h2 class="text-sm sm:text-base font-semibold tracking-[0.25em] uppercase text-emerald-400">Latest 20 fresh uploads</h2>
+            <p class="mt-1 text-xs sm:text-[13px] text-slate-300/90">
+              A rolling view of new public releases across the same styles, sorted by upload time.
+            </p>
           </section>
-          <p class="text-[11px] text-slate-400">
-            Filter affects emphasis in the Top 50 list and rising artist blocks below.
+          <section class="flex items-center gap-2 text-[11px]">
+            <button id="btn-refresh-latest" type="button" class="px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700/80 text-slate-100">
+              Refresh view
+            </button>
+            <p id="latest-status" class="text-slate-400"></p>
+          </section>
+        </header>
+        <section class="mt-2 rounded-2xl bg-slate-950/80 border border-slate-800/90 max-h-[360px] overflow-y-auto" id="latest-list" aria-busy="false">
+          <section class="p-3 space-y-2" id="latest-skeleton">
+            <p class="text-[11px] text-slate-400">Loading the newest tracks.</p>
+            <section class="animate-pulse space-y-2">
+              <section class="h-12 rounded-xl bg-slate-800/60"></section>
+              <section class="h-12 rounded-xl bg-slate-800/60"></section>
+            </section>
+          </section>
+        </section>
+      </section>
+    </section>
+
+    <section class="space-y-6" id="community">
+      <section class="rounded-3xl bg-edm-glass border border-slate-800/80 backdrop-blur-2xl p-4 sm:p-6 space-y-3">
+        <header class="flex flex-col gap-2">
+          <h2 class="text-sm sm:text-base font-semibold tracking-[0.25em] uppercase text-emerald-400">Community top songs</h2>
+          <p class="text-xs sm:text-[13px] text-slate-300/90">
+            Every visitor can tap once on a track to vote. This side view highlights the songs that receive the most love over time.
           </p>
+        </header>
+        <section class="mt-2 rounded-2xl bg-slate-950/80 border border-slate-800/90 max-h-[260px] overflow-y-auto" id="community-list" aria-busy="false">
+          <section class="p-3 space-y-2" id="community-skeleton">
+            <p class="text-[11px] text-slate-400">Waiting for community votes.</p>
+          </section>
         </section>
+      </section>
 
-        <section class="rounded-2xl bg-slate-950/90 border border-slate-800 p-3 space-y-2">
-          <p class="text-[11px] uppercase tracking-[0.22em] text-sky-400">
-            Scene notes
+      <section class="rounded-3xl bg-edm-panel border border-slate-800 shadow-edm-soft p-4 sm:p-6 space-y-3" id="news">
+        <header>
+          <h2 class="text-sm sm:text-base font-semibold tracking-[0.25em] uppercase text-emerald-400">EDM headlines</h2>
+          <p class="mt-1 text-xs sm:text-[13px] text-slate-300/90">
+            A short selection of recent stories from established electronic music outlets.
           </p>
-          <p class="text-[11px] text-slate-300/90" id="editorial-meta">
-            Today’s overview updates once per day based on SoundCloud charts and trends.
-          </p>
+        </header>
+        <section class="mt-2 rounded-2xl bg-slate-950/80 border border-slate-800/90 max-h-[260px] overflow-y-auto" id="news-list" aria-busy="false">
+          <section class="p-3 space-y-2" id="news-skeleton">
+            <p class="text-[11px] text-slate-400">Loading EDM news headlines.</p>
+            <section class="animate-pulse space-y-2">
+              <section class="h-10 rounded-xl bg-slate-800/60"></section>
+              <section class="h-10 rounded-xl bg-slate-800/60"></section>
+            </section>
+          </section>
+        </section>
+      </section>
+
+      <section class="rounded-3xl bg-slate-950/95 border border-slate-800 p-4 space-y-3">
+        <section class="rounded-2xl border border-slate-800 bg-slate-900/95 p-3 flex items-center justify-center min-h-[80px]">
+          <ins class="adsbygoogle"
+               style="display:block;width:100%;min-height:60px"
+               data-ad-client="ca-pub-4201977277980522"
+               data-ad-slot="9876543210"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>
+            if (window.adsbygoogle) {
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            }
+          </script>
+        </section>
+        <section class="text-[11px] text-slate-400">
+          <p>Advertising supports the curation of this hub and keeps access free for listeners.</p>
         </section>
       </section>
     </section>
   </section>
 
-  <!-- TOP 50 -->
-  <section id="top50"
-           class="rounded-3xl bg-edm-glass border border-slate-800/80 backdrop-blur-2xl p-4 sm:p-6 space-y-3">
-    <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-      <section>
-        <h2 class="text-sm sm:text-base font-semibold tracking-[0.25em] uppercase text-emerald-400">
-          Top 50 SoundCloud EDM tracks today
-        </h2>
-        <p class="mt-1 text-xs sm:text-[13px] text-slate-300/90">
-          Tracks are sorted by plays and freshness inside a focused selection of electronic genres that fuel clubs and festivals.
-        </p>
-      </section>
-      <section class="flex flex-col items-end gap-1 text-[11px]">
-        <button id="btn-refresh"
-                type="button"
-                class="px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700/80 text-slate-100">
-          Refresh snapshot
-        </button>
-        <p id="snapshot-status" class="text-slate-400" aria-live="polite"></p>
-      </section>
-    </header>
-
-    <section class="mt-2 grid grid-cols-2 sm:grid-cols-4 gap-2 text-[11px] text-slate-300">
-      <section class="rounded-xl bg-slate-950/80 border border-slate-800 p-2">
-        <p class="uppercase tracking-[0.2em] text-slate-500">Most played track</p>
-        <p id="stat-top-track" class="mt-1 text-slate-50 font-semibold truncate">–</p>
-      </section>
-      <section class="rounded-xl bg-slate-950/80 border border-slate-800 p-2">
-        <p class="uppercase tracking-[0.2em] text-slate-500">Key artist</p>
-        <p id="stat-top-artist" class="mt-1 text-slate-50 font-semibold truncate">–</p>
-      </section>
-      <section class="rounded-xl bg-slate-950/80 border border-slate-800 p-2">
-        <p class="uppercase tracking-[0.2em] text-slate-500">Average plays</p>
-        <p id="stat-avg-plays" class="mt-1 text-slate-50 font-semibold">–</p>
-      </section>
-      <section class="rounded-xl bg-slate-950/80 border border-slate-800 p-2">
-        <p class="uppercase tracking-[0.2em] text-slate-500">Genres represented</p>
-        <p id="stat-genre-count" class="mt-1 text-slate-50 font-semibold">–</p>
-      </section>
-    </section>
-
-    <section class="mt-3 rounded-2xl bg-slate-950/80 border border-slate-800/90 max-h-[460px] overflow-y-auto"
-             aria-live="polite"
-             aria-busy="false"
-             id="top50-list">
-      <section class="p-3 space-y-2" id="top50-skeleton">
-        <p class="text-[11px] text-slate-400">Loading today’s Top 50 from the hub.</p>
-        <section class="animate-pulse space-y-2">
-          <section class="h-10 rounded-xl bg-slate-800/60"></section>
-          <section class="h-10 rounded-xl bg-slate-800/60"></section>
-          <section class="h-10 rounded-xl bg-slate-800/60"></section>
-        </section>
-      </section>
-    </section>
-
-    <section class="mt-3 rounded-2xl border border-slate-800 bg-slate-950/90 p-2 flex items-center justify-center">
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-4201977277980522"
-           data-ad-slot="9876543210"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-    </section>
-  </section>
-
-  <!-- RISING ARTISTS -->
-  <section id="artists"
-           class="rounded-3xl bg-edm-panel border border-slate-800 shadow-edm-soft p-4 sm:p-6 space-y-3">
-    <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-      <section>
-        <h2 class="text-sm sm:text-base font-semibold tracking-[0.25em] uppercase text-emerald-400">
-          Rising artists in this snapshot
-        </h2>
-        <p class="mt-1 text-xs sm:text-[13px] text-slate-300/90">
-          Artists with more than one entry in the current Top 50 or strong momentum across new releases.
-        </p>
-      </section>
-      <p class="text-[11px] text-slate-400" id="artist-meta">
-        Updated from the same data as the charts to keep everything in sync.
-      </p>
-    </header>
-
-    <section class="relative overflow-x-auto no-scrollbar">
-      <section id="artist-strip"
-               class="flex gap-3 pb-2 min-h-[140px]">
-        <section class="min-w-[180px] rounded-2xl bg-slate-950/80 border border-slate-800/80 p-3 animate-pulse">
-          <section class="h-10 w-10 rounded-full bg-slate-800 mb-2"></section>
-          <section class="h-3 rounded bg-slate-800 mb-1"></section>
-          <section class="h-3 rounded bg-slate-800 w-2/3"></section>
-        </section>
-        <section class="min-w-[180px] rounded-2xl bg-slate-950/80 border border-slate-800/80 p-3 animate-pulse">
-          <section class="h-10 w-10 rounded-full bg-slate-800 mb-2"></section>
-          <section class="h-3 rounded bg-slate-800 mb-1"></section>
-          <section class="h-3 rounded bg-slate-800 w-2/3"></section>
-        </section>
-      </section>
-    </section>
-  </section>
-
-  <!-- LATEST 20 -->
-  <section id="latest"
-           class="rounded-3xl bg-edm-glass border border-slate-800/80 backdrop-blur-2xl p-4 sm:p-6 space-y-3">
-    <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-      <section>
-        <h2 class="text-sm sm:text-base font-semibold tracking-[0.25em] uppercase text-emerald-400">
-          Latest 20 releases from today’s selection
-        </h2>
-        <p class="mt-1 text-xs sm:text-[13px] text-slate-300/90">
-          The newest uploads in the snapshot sorted by upload time so you can be early on the next wave.
-        </p>
-      </section>
-      <p id="latest-meta" class="text-[11px] text-slate-400" aria-live="polite"></p>
-    </header>
-
-    <section class="mt-2 rounded-2xl bg-slate-950/80 border border-slate-800/90 max-h-[380px] overflow-y-auto"
-             id="latest-list"
-             aria-live="polite"
-             aria-busy="false">
-      <section class="p-3 space-y-2" id="latest-skeleton">
-        <p class="text-[11px] text-slate-400">Loading the freshest tracks in this view.</p>
-        <section class="animate-pulse space-y-2">
-          <section class="h-12 rounded-xl bg-slate-800/60"></section>
-          <section class="h-12 rounded-xl bg-slate-800/60"></section>
-        </section>
-      </section>
-    </section>
-
-    <section class="mt-3 rounded-2xl border border-slate-800 bg-slate-950/90 p-2 flex items-center justify-center">
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-4201977277980522"
-           data-ad-slot="2468135790"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-    </section>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about"
-           class="rounded-3xl bg-edm-panel border border-slate-800 shadow-edm-soft p-4 sm:p-6 space-y-3">
+  <section id="about" class="rounded-3xl bg-edm-panel border border-slate-800 shadow-edm-soft p-4 sm:p-6 space-y-4">
     <header>
-      <h2 class="text-sm sm:text-base font-semibold tracking-[0.25em] uppercase text-emerald-400">
-        About EDM VERSEX
-      </h2>
+      <h2 class="text-sm sm:text-base font-semibold tracking-[0.25em] uppercase text-emerald-400">About EDM VERSEX</h2>
     </header>
     <section class="space-y-2 text-sm sm:text-[15px] leading-relaxed text-slate-300/90">
       <p>
-        EDM VERSEX is a daily touchpoint for electronic dance music. The hub focuses on the styles that keep
-        clubs and festivals moving and uses live SoundCloud data to create a snapshot of what listeners care about right now.
+        EDM VERSEX is a focused destination for electronic dance music listeners who want a quick feel for what is happening right now. The charts highlight club-driven EDM, house and trance, while the latest section follows new uploads across the same universe of sound.
       </p>
       <p>
-        The charts and lists refresh at most once per day. This keeps the experience fast and stable while respecting
-        SoundCloud limits. If the API ever returns an error, the site falls back to the last valid snapshot so the content
-        always feels consistent.
+        Community voting adds another layer by showing which tracks listeners keep returning to, regardless of play counts or hype. The aim is to give a balanced view where global discovery and personal taste sit side by side.
       </p>
       <p>
-        A daily editorial overview highlights patterns across tracks, artists and genres. Together with rising artist
-        cards and the latest release view this creates a simple habit: open EDM VERSEX once a day to discover fresh music
-        and feel where the energy in electronic dance music is heading next.
+        News headlines offer short entry points into stories around artists, festivals, labels and releases, so the hub can serve both as a listening start page and as a daily briefing for electronic music culture.
       </p>
     </section>
   </section>
 
-  <section class="rounded-3xl bg-slate-950/95 border border-slate-800/90 px-4 py-3 text-[10px] text-slate-400 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-    <p>All SoundCloud and editorial data is for discovery purposes. Always support the artists on their original profiles and stores.</p>
-    <a href="privacy.html" class="underline">Privacy and cookies</a>
+  <section id="contact" class="rounded-3xl bg-edm-glass border border-slate-800/80 backdrop-blur-2xl p-4 sm:p-6 space-y-3">
+    <header>
+      <h2 class="text-sm sm:text-base font-semibold tracking-[0.25em] uppercase text-emerald-400">Contact</h2>
+    </header>
+    <section class="text-sm sm:text-[15px] text-slate-300/90 space-y-1">
+      <p>For promo links, label features or partnership ideas, reach out by email:</p>
+      <p class="font-semibold text-emerald-400">info@edmversex.com</p>
+      <p>Messages are read regularly and relevant material may be featured in future updates.</p>
+    </section>
   </section>
 </main>
+
+<footer class="fixed bottom-0 left-0 right-0 z-20">
+  <section class="mx-auto max-w-6xl px-4 pb-[env(safe-area-inset-bottom)]">
+    <section class="rounded-2xl bg-slate-950/95 border border-slate-800/90 backdrop-blur-xl shadow-edm-soft px-3 py-2 flex flex-col gap-1">
+      <section class="flex items-center justify-between text-[10px] text-slate-400">
+        <p>© <span id="year"></span> EDM VERSEX</p>
+        <section class="flex items-center gap-1.5">
+          <a href="#top" class="underline">Top</a>
+          <a href="#charts" class="underline">Charts</a>
+          <a href="#community" class="underline">Community</a>
+        </section>
+      </section>
+      <section class="flex items-center justify-between text-[10px] text-slate-500">
+        <p>Daily EDM hub for charts, discovery and listener favourites.</p>
+        <a href="#contact" class="underline">Contact</a>
+      </section>
+    </section>
+  </section>
+</footer>
 
 <noscript>
   <section class="mx-auto max-w-6xl mt-4 px-4">
     <section class="rounded-2xl bg-red-900/80 text-red-100 p-3 text-xs">
-      JavaScript is disabled. Charts and live data cannot load but static information remains available.
+      JavaScript is disabled. Charts, latest tracks, news and voting features require JavaScript to function.
     </section>
   </section>
 </noscript>
 
 <script>
-  const API_BASE = "https://royal-union-d5f0.kalleuusitalo1.workers.dev";
-  const SNAPSHOT_ENDPOINT = API_BASE + "/api/snapshot";
+  (function () {
+    "use strict";
 
-  let snapshotData = null;
-  let currentGenreFilter = "all";
-
-  function setText(el, txt) {
-    if (el) el.textContent = txt;
-  }
-
-  function formatNumber(n) {
-    if (typeof n !== "number") n = Number(n || 0);
-    if (Number.isNaN(n)) return "-";
-    if (n >= 1_000_000) return (n / 1_000_000).toFixed(1) + "M";
-    if (n >= 1_000) return (n / 1_000).toFixed(1) + "k";
-    return n.toString();
-  }
-
-  function normalizeGenre(g) {
-    const s = String(g || "").toLowerCase();
-    if (s.includes("house")) return "house";
-    if (s.includes("trance")) return "trance";
-    if (s.includes("techno")) return "techno";
-    return "other";
-  }
-
-  function renderTop50() {
-    const container = document.getElementById("top50-list");
-    const skeleton = document.getElementById("top50-skeleton");
-    if (!container || !snapshotData) return;
-
-    container.setAttribute("aria-busy", "true");
-    if (skeleton) skeleton.style.display = "none";
-
-    const list = snapshotData.top50 || [];
-    const html = list.map(function (track) {
-      const normGenre = normalizeGenre(track.genre);
-      const highlighted = currentGenreFilter === "all" || currentGenreFilter === normGenre;
-      const itemClass = highlighted
-        ? "border-emerald-500/70 bg-slate-900/90"
-        : "border-slate-800 bg-slate-950/80 opacity-80";
-
-      return (
-        '<article class="m-1 rounded-2xl border ' + itemClass +
-        ' p-2.5 flex items-center gap-3 text-[11px] sm:text-[13px]">' +
-        '  <section class="flex flex-col items-center justify-center w-7">' +
-        '    <span class="text-xs font-semibold text-slate-300">#' + String(track.rank || "?") + "</span>" +
-        "  </section>" +
-        '  <section class="flex-1 min-w-0">' +
-        '    <p class="text-[10px] uppercase tracking-[0.2em] text-slate-400">' +
-        (track.genre || "EDM") + "</p>" +
-        '    <a href="' + (track.url || "#") + '" target="_blank" rel="noopener noreferrer"' +
-        '       class="block truncate text-slate-50 font-semibold hover:text-emerald-400">' +
-        (track.title || "Untitled track") + "</a>" +
-        '    <p class="text-[11px] text-slate-400 truncate">by ' + (track.artist || "Unknown artist") + "</p>" +
-        "  </section>" +
-        '  <section class="flex flex-col items-end text-right text-[10px] text-slate-400 gap-0.5">' +
-        '    <span>🎧 ' + formatNumber(track.plays || 0) + " plays</span>" +
-        '    <a href="' + (track.url || "#") + '" target="_blank" rel="noopener noreferrer"' +
-        '       class="inline-flex items-center justify-center px-2 py-0.5 rounded-full border border-emerald-500/80 text-[10px] text-emerald-400 hover:bg-emerald-500 hover:text-slate-950 transition-colors">' +
-        "      Open" +
-        "    </a>" +
-        "  </section>" +
-        "</article>"
-      );
-    }).join("");
-
-    container.innerHTML = html;
-    container.setAttribute("aria-busy", "false");
-  }
-
-  function renderLatest() {
-    const container = document.getElementById("latest-list");
-    const skeleton = document.getElementById("latest-skeleton");
-    const meta = document.getElementById("latest-meta");
-    if (!container || !snapshotData) return;
-
-    container.setAttribute("aria-busy", "true");
-    if (skeleton) skeleton.style.display = "none";
-
-    const list = snapshotData.latest20 || [];
-    const html = list.map(function (rel) {
-      return (
-        '<article class="m-1 rounded-2xl border border-slate-800 bg-slate-950/80 p-3 flex items-center gap-3 text-[11px] sm:text-[13px]">' +
-        '  <section class="flex-1 min-w-0">' +
-        '    <p class="text-[10px] uppercase tracking-[0.2em] text-sky-400">' + (rel.genre || "EDM") + "</p>" +
-        '    <a href="' + (rel.url || "#") + '" target="_blank" rel="noopener noreferrer"' +
-        '       class="block truncate text-slate-50 font-semibold hover:text-emerald-400">' +
-        (rel.title || "Untitled track") + "</a>" +
-        '    <p class="text-[11px] text-slate-400 truncate">by ' + (rel.artist || "Unknown artist") + "</p>" +
-        '    <p class="text-[10px] text-slate-500 mt-0.5">' +
-        (rel.uploaded_at || "") + "</p>" +
-        "  </section>" +
-        '  <section class="flex flex-col items-end text-right gap-1 text-[10px] text-slate-400">' +
-        '    <a href="' + (rel.url || "#") + '" target="_blank" rel="noopener noreferrer"' +
-        '       class="inline-flex items-center justify-center px-2.5 py-0.5 rounded-full bg-slate-900/80 border border-slate-700/80 hover:bg-slate-800">' +
-        "      Open" +
-        "    </a>" +
-        "  </section>" +
-        "</article>"
-      );
-    }).join("");
-
-    container.innerHTML = html;
-    container.setAttribute("aria-busy", "false");
-
-    if (meta && snapshotData.updated_at) {
-      const d = new Date(snapshotData.updated_at);
-      meta.textContent = "This view reflects uploads around " + d.toLocaleDateString() + ".";
-    }
-  }
-
-  function renderArtists() {
-    const strip = document.getElementById("artist-strip");
-    const meta = document.getElementById("artist-meta");
-    if (!strip || !snapshotData) return;
-
-    const artists = snapshotData.artists || [];
-    if (!artists.length) {
-      strip.innerHTML =
-        '<p class="text-[11px] text-slate-400 px-2 py-3">No clear rising artists detected in this snapshot.</p>';
-      return;
-    }
-
-    const html = artists.map(function (a) {
-      return (
-        '<article class="min-w-[210px] rounded-2xl bg-slate-950/80 border border-slate-800/80 p-3 flex flex-col gap-2">' +
-        '  <section class="flex items-center gap-2">' +
-        '    <section class="h-10 w-10 rounded-full bg-slate-800 overflow-hidden flex items-center justify-center">' +
-        (a.artwork
-          ? '<img src="' + a.artwork + '" alt="' + a.name + ' avatar" class="h-full w-full object-cover">'
-          : '<span class="text-[13px] text-slate-300">' + a.name.charAt(0).toUpperCase() + "</span>") +
-        "    </section>" +
-        '    <section class="flex-1 min-w-0">' +
-        '      <p class="text-[11px] font-semibold text-slate-50 truncate">' + a.name + "</p>" +
-        '      <p class="text-[10px] text-slate-400 truncate">' +
-        a.track_count + " tracks in this snapshot" +
-        "</p>" +
-        "    </section>" +
-        "  </section>" +
-        '  <section class="text-[10px] text-slate-400 flex flex-col gap-0.5">' +
-        '    <span>Estimated plays: ' + formatNumber(a.total_plays || 0) + "</span>" +
-        (a.top_track && a.top_track.title
-          ? '<a href="' + (a.top_track.url || "#") + '" target="_blank" rel="noopener noreferrer"' +
-            ' class="inline-flex items-center gap-1 text-emerald-400 hover:text-emerald-300">' +
-            '<span>Featured track:</span><span class="truncate">' + a.top_track.title + "</span></a>"
-          : "") +
-        "  </section>" +
-        "</article>"
-      );
-    }).join("");
-
-    strip.innerHTML = html;
-
-    if (meta && snapshotData.updated_at) {
-      meta.textContent = "Rising artist cards are based on repeated appearances in today’s Top 50.";
-    }
-  }
-
-  function updateStats() {
-    if (!snapshotData) return;
-    const tracks = snapshotData.top50 || [];
-    if (!tracks.length) return;
+    const API_BASE = "https://royal-union-d5f0.kalleuusitalo1.workers.dev";
+    const ENDPOINTS = {
+      snapshot: API_BASE + "/api/snapshot",
+      top50: API_BASE + "/api/top50",
+      latest: API_BASE + "/api/latest",
+      news: API_BASE + "/api/news",
+      vote: API_BASE + "/api/vote",
+      topVoted: API_BASE + "/api/top-voted"
+    };
 
     const statTrackCount = document.getElementById("stat-track-count");
     const statLastUpdated = document.getElementById("stat-last-updated");
@@ -563,166 +387,394 @@
     const statTopArtist = document.getElementById("stat-top-artist");
     const statAvgPlays = document.getElementById("stat-avg-plays");
     const statGenreCount = document.getElementById("stat-genre-count");
+    const heroSummary = document.getElementById("hero-summary");
 
-    setText(statTrackCount, tracks.length.toString());
+    const top50Container = document.getElementById("top50-list");
+    const top50Skeleton = document.getElementById("top50-skeleton");
+    const top50Status = document.getElementById("top50-status");
+    const btnRefreshTop = document.getElementById("btn-refresh-top");
 
-    if (snapshotData.updated_at) {
-      const d = new Date(snapshotData.updated_at);
-      setText(statLastUpdated, d.toLocaleString());
+    const latestContainer = document.getElementById("latest-list");
+    const latestSkeleton = document.getElementById("latest-skeleton");
+    const latestStatus = document.getElementById("latest-status");
+    const btnRefreshLatest = document.getElementById("btn-refresh-latest");
+
+    const communityContainer = document.getElementById("community-list");
+    const communitySkeleton = document.getElementById("community-skeleton");
+
+    const newsContainer = document.getElementById("news-list");
+    const newsSkeleton = document.getElementById("news-skeleton");
+
+    const yearSpan = document.getElementById("year");
+    if (yearSpan) {
+      yearSpan.textContent = new Date().getFullYear();
     }
 
-    const topTrack = tracks[0];
-    setText(statTopTrack, topTrack ? topTrack.title : "–");
-    setText(statTopArtist, topTrack ? topTrack.artist : "–");
+    let top50Data = [];
+    let latestData = [];
+    let currentGenreFilter = "all";
 
-    let totalPlays = 0;
-    const genreMap = {};
-    tracks.forEach(function (t) {
-      const plays = typeof t.plays === "number" ? t.plays : Number(t.plays || 0);
-      if (!Number.isNaN(plays)) totalPlays += plays;
-      const g = normalizeGenre(t.genre);
-      genreMap[g] = (genreMap[g] || 0) + 1;
-    });
-
-    const avg = totalPlays / tracks.length;
-    setText(statAvgPlays, formatNumber(Math.round(avg)));
-
-    const genres = Object.keys(genreMap);
-    setText(statGenreCount, genres.length);
-    const dominant = genres.sort(function (a, b) {
-      return (genreMap[b] || 0) - (genreMap[a] || 0);
-    })[0];
-    setText(statDominantGenre, dominant ? dominant.toUpperCase() : "MIXED");
-  }
-
-  function renderEditorial() {
-    if (!snapshotData) return;
-    const edt = document.getElementById("editorial-text");
-    const meta = document.getElementById("editorial-meta");
-    if (edt && snapshotData.editorial && snapshotData.editorial.text) {
-      edt.textContent = snapshotData.editorial.text;
+    function setText(el, text) {
+      if (el) el.textContent = text === undefined || text === null ? "" : String(text);
     }
-    if (meta && snapshotData.editorial) {
-      if (snapshotData.editorial.fallback_used) {
-        meta.textContent = "Overview uses a stable fallback description because the language model was not available.";
-      } else {
-        meta.textContent = "Overview is generated once per day from today’s chart data using a language model.";
-      }
-    }
-  }
 
-  async function fetchSnapshot() {
-    const statusEl = document.getElementById("snapshot-status");
-    try {
-      setText(statusEl, "Loading snapshot.");
-      const res = await fetch(SNAPSHOT_ENDPOINT, { cache: "no-store" });
+    function formatNumber(n) {
+      const num = typeof n === "number" ? n : Number(n || 0);
+      if (!Number.isFinite(num)) return "-";
+      if (num >= 1000000) return (num / 1000000).toFixed(1) + "M";
+      if (num >= 1000) return (num / 1000).toFixed(1) + "k";
+      return num.toString();
+    }
+
+    function normalizeGenre(g) {
+      const v = String(g || "").toLowerCase();
+      if (v.includes("house")) return "house";
+      if (v.includes("trance")) return "trance";
+      if (v.includes("techno")) return "techno";
+      return "other";
+    }
+
+    async function fetchJSON(url, options) {
+      const res = await fetch(url, options || { cache: "no-store" });
       if (!res.ok) throw new Error("HTTP " + res.status);
-      const data = await res.json();
-      snapshotData = data;
-      renderTop50();
-      renderLatest();
-      renderArtists();
-      updateStats();
-      renderEditorial();
-      if (data.fallback_used) {
-        setText(statusEl, "Snapshot loaded with cached data.");
-      } else {
-        setText(statusEl, "Snapshot updated.");
+      return res.json();
+    }
+
+    function renderTop50() {
+      if (!top50Container) return;
+      top50Container.setAttribute("aria-busy", "true");
+      if (top50Skeleton) top50Skeleton.style.display = "none";
+      const html = top50Data.map(function (track, index) {
+        const norm = normalizeGenre(track.genre);
+        const highlighted = currentGenreFilter === "all" || currentGenreFilter === norm;
+        const classes = highlighted
+          ? "border-emerald-500/70 bg-slate-900/95"
+          : "border-slate-800 bg-slate-950/80 opacity-85";
+        return (
+          '<article class="m-1 rounded-2xl border ' + classes + ' p-2.5 flex items-center gap-3 text-[11px] sm:text-[13px]">' +
+          '  <section class="flex flex-col items-center justify-center w-7">' +
+          '    <span class="text-xs font-semibold text-slate-300">#' + String(track.rank || index + 1) + "</span>" +
+          "  </section>" +
+          '  <section class="flex-1 min-w-0">' +
+          '    <p class="text-[10px] uppercase tracking-[0.2em] text-slate-400">' + (track.genre || "EDM") + "</p>" +
+          '    <a href="' + (track.url || "#") + '" target="_blank" rel="noopener noreferrer" class="block truncate text-slate-50 font-semibold hover:text-emerald-400">' +
+          (track.title || "Untitled track") + "</a>" +
+          '    <p class="text-[11px] text-slate-400 truncate">by ' + (track.artist || "Unknown artist") + "</p>" +
+          "  </section>" +
+          '  <section class="flex flex-col items-end text-right text-[10px] text-slate-400 gap-1">' +
+          '    <span>🎧 ' + formatNumber(track.plays || 0) + " plays</span>" +
+          '    <div class="flex gap-1">' +
+          '      <button class="vote-btn px-2 py-0.5 rounded-full border border-emerald-500/80 text-[10px] text-emerald-400 hover:bg-emerald-500 hover:text-slate-950 transition-colors" data-list="top" data-index="' + index + '">♥ Vote</button>' +
+          '      <a href="' + (track.url || "#") + '" target="_blank" rel="noopener noreferrer" class="px-2 py-0.5 rounded-full bg-slate-900/80 border border-slate-700/80">Open</a>' +
+          "    </div>" +
+          "  </section>" +
+          "</article>"
+        );
+      }).join("");
+      top50Container.innerHTML = html || '<section class="p-3 text-[11px] text-slate-400">No tracks available right now.</section>';
+      top50Container.setAttribute("aria-busy", "false");
+      wireVoteButtons();
+    }
+
+    function renderLatest() {
+      if (!latestContainer) return;
+      latestContainer.setAttribute("aria-busy", "true");
+      if (latestSkeleton) latestSkeleton.style.display = "none";
+      const html = latestData.map(function (track, index) {
+        return (
+          '<article class="m-1 rounded-2xl border border-slate-800 bg-slate-950/85 p-3 flex items-center gap-3 text-[11px] sm:text-[13px]">' +
+          '  <section class="flex-1 min-w-0">' +
+          '    <p class="text-[10px] uppercase tracking-[0.2em] text-sky-400">' + (track.genre || "EDM") + "</p>" +
+          '    <a href="' + (track.url || "#") + '" target="_blank" rel="noopener noreferrer" class="block truncate text-slate-50 font-semibold hover:text-emerald-400">' +
+          (track.title || "Untitled track") + "</a>" +
+          '    <p class="text-[11px] text-slate-400 truncate">by ' + (track.artist || "Unknown artist") + "</p>" +
+          '    <p class="text-[10px] text-slate-500 mt-0.5">' + (track.uploaded_at || "") + "</p>" +
+          "  </section>" +
+          '  <section class="flex flex-col items-end text-right gap-1 text-[10px] text-slate-400">' +
+          '    <button class="vote-btn px-2.5 py-0.5 rounded-full border border-emerald-500/80 text-[10px] text-emerald-400 hover:bg-emerald-500 hover:text-slate-950 transition-colors" data-list="latest" data-index="' + index + '">♥ Vote</button>' +
+          '    <a href="' + (track.url || "#") + '" target="_blank" rel="noopener noreferrer" class="px-2.5 py-0.5 rounded-full bg-slate-900/80 border border-slate-700/80">Open</a>' +
+          "  </section>" +
+          "</article>"
+        );
+      }).join("");
+      latestContainer.innerHTML = html || '<section class="p-3 text-[11px] text-slate-400">No recent uploads available right now.</section>';
+      latestContainer.setAttribute("aria-busy", "false");
+      wireVoteButtons();
+    }
+
+    function renderCommunity(list) {
+      if (!communityContainer) return;
+      communityContainer.setAttribute("aria-busy", "true");
+      if (communitySkeleton) communitySkeleton.style.display = "none";
+      if (!Array.isArray(list) || list.length === 0) {
+        communityContainer.innerHTML = '<section class="p-3 text-[11px] text-slate-400">Community favourites will appear here as listeners vote on tracks.</section>';
+        communityContainer.setAttribute("aria-busy", "false");
+        return;
       }
-    } catch (err) {
-      console.error("Snapshot error", err);
-      setText(statusEl, "Error loading snapshot.");
+      const html = list.map(function (item, index) {
+        return (
+          '<article class="m-1 rounded-2xl border border-emerald-500/60 bg-slate-950/90 p-3 flex items-center gap-3 text-[11px] sm:text-[13px]">' +
+          '  <section class="flex flex-col items-center justify-center w-7">' +
+          '    <span class="text-xs font-semibold text-emerald-400">#' + String(index + 1) + "</span>" +
+          "  </section>" +
+          '  <section class="flex-1 min-w-0">' +
+          '    <p class="text-[10px] uppercase tracking-[0.2em] text-slate-400">' + (item.genre || "EDM") + "</p>" +
+          '    <a href="' + (item.url || "#") + '" target="_blank" rel="noopener noreferrer" class="block truncate text-slate-50 font-semibold hover:text-emerald-400">' +
+          (item.title || "Untitled track") + "</a>" +
+          '    <p class="text-[11px] text-slate-400 truncate">by ' + (item.artist || "Unknown artist") + "</p>" +
+          "  </section>" +
+          '  <section class="flex flex-col items-end text-right text-[10px] text-slate-400">' +
+          '    <span>♥ ' + formatNumber(item.votes || 0) + " votes</span>" +
+          "  </section>" +
+          "</article>"
+        );
+      }).join("");
+      communityContainer.innerHTML = html;
+      communityContainer.setAttribute("aria-busy", "false");
     }
-  }
 
-  function initGenreFilter() {
-    const buttons = document.querySelectorAll(".genre-filter-btn");
-    buttons.forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        const genre = btn.getAttribute("data-genre") || "all";
-        currentGenreFilter = genre;
+    function renderNews(items) {
+      if (!newsContainer) return;
+      newsContainer.setAttribute("aria-busy", "true");
+      if (newsSkeleton) newsSkeleton.style.display = "none";
+      if (!Array.isArray(items) || items.length === 0) {
+        newsContainer.innerHTML = '<section class="p-3 text-[11px] text-slate-400">No headlines available right now.</section>';
+        newsContainer.setAttribute("aria-busy", "false");
+        return;
+      }
+      const html = items.map(function (item) {
+        return (
+          '<article class="m-1 rounded-2xl border border-slate-800 bg-slate-950/85 p-3 text-[11px] sm:text-[13px]">' +
+          '  <a href="' + (item.url || "#") + '" target="_blank" rel="noopener noreferrer" class="block group">' +
+          '    <p class="text-[10px] uppercase tracking-[0.2em] text-sky-400">' + (item.source || "EDM news") + "</p>" +
+          '    <p class="mt-0.5 text-slate-50 font-semibold group-hover:text-emerald-400">' + (item.title || "Untitled story") + "</p>" +
+          '    <p class="mt-0.5 text-[11px] text-slate-400 line-clamp-2">' + (item.summary || "") + "</p>" +
+          '    <p class="mt-0.5 text-[10px] text-slate-500">' + (item.published_at || "") + "</p>" +
+          "  </a>" +
+          "</article>"
+        );
+      }).join("");
+      newsContainer.innerHTML = html;
+      newsContainer.setAttribute("aria-busy", "false");
+    }
 
-        buttons.forEach(function (b) {
-          b.classList.remove("bg-emerald-500", "text-slate-950");
-          b.classList.add("bg-slate-900/80", "border-slate-700/80", "text-slate-100");
-        });
-        btn.classList.remove("bg-slate-900/80", "text-slate-100");
-        btn.classList.add("bg-emerald-500", "text-slate-950");
-
-        renderTop50();
-        renderArtists();
+    function updateStatsFromSnapshot(snapshot) {
+      if (!snapshot || !snapshot.top50 || !snapshot.latest20) return;
+      const totalTracks = snapshot.top50.length + snapshot.latest20.length;
+      setText(statTrackCount, totalTracks || "–");
+      const updated = snapshot.createdAt ? new Date(snapshot.createdAt) : new Date();
+      setText(statLastUpdated, updated.toLocaleString());
+      if (snapshot.top50.length > 0) {
+        const first = snapshot.top50[0];
+        setText(statTopTrack, first.title || "–");
+        setText(statTopArtist, first.artist || "–");
+      } else {
+        setText(statTopTrack, "–");
+        setText(statTopArtist, "–");
+      }
+      let totalPlays = 0;
+      const genreMap = {};
+      snapshot.top50.forEach(function (t) {
+        const plays = typeof t.plays === "number" ? t.plays : Number(t.plays || 0);
+        if (Number.isFinite(plays)) totalPlays += plays;
+        const g = normalizeGenre(t.genre);
+        genreMap[g] = (genreMap[g] || 0) + 1;
       });
-    });
-  }
+      const avg = snapshot.top50.length ? totalPlays / snapshot.top50.length : 0;
+      setText(statAvgPlays, snapshot.top50.length ? formatNumber(Math.round(avg)) : "–");
+      const genres = Object.keys(genreMap);
+      setText(statGenreCount, genres.length || "–");
+      const dominant = genres.sort(function (a, b) {
+        return (genreMap[b] || 0) - (genreMap[a] || 0);
+      })[0];
+      setText(statDominantGenre, dominant ? dominant.toUpperCase() : "MIXED");
+      if (snapshot.summary && snapshot.summary.text) {
+        setText(heroSummary, snapshot.summary.text);
+      }
+    }
 
-  function initAds() {
-    window.addEventListener("load", function () {
+    async function loadSnapshot() {
       try {
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      } catch (e) {}
-    });
-  }
-
-  function initWaves() {
-    const canvas = document.getElementById("bg-waves");
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    resize();
-    window.addEventListener("resize", resize);
-
-    let t = 0;
-    function draw() {
-      if (!ctx) return;
-      const w = canvas.width;
-      const h = canvas.height;
-      ctx.clearRect(0, 0, w, h);
-      ctx.lineWidth = 1.1;
-
-      const layers = [
-        { color: "rgba(34,197,94,0.45)", amp: 32, speed: 0.0018 },
-        { color: "rgba(56,189,248,0.40)", amp: 42, speed: 0.0012 },
-        { color: "rgba(244,114,182,0.35)", amp: 56, speed: 0.0009 }
-      ];
-
-      layers.forEach(function (g, i) {
-        ctx.beginPath();
-        ctx.strokeStyle = g.color;
-        const yBase = h * (0.3 + 0.18 * i);
-        for (let x = 0; x <= w; x += 10) {
-          const y = yBase +
-            Math.sin((x * 0.012) + t * g.speed * 260) * g.amp *
-            Math.cos(t * g.speed * 120 + i);
-          if (x === 0) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
+        const data = await fetchJSON(ENDPOINTS.snapshot);
+        if (data && !data.error) {
+          updateStatsFromSnapshot(data);
         }
-        ctx.stroke();
+      } catch (e) {
+      }
+    }
+
+    async function loadTop50() {
+      try {
+        setText(top50Status, "Loading");
+        const data = await fetchJSON(ENDPOINTS.top50);
+        if (Array.isArray(data) && data.length > 0) {
+          top50Data = data;
+          renderTop50();
+          setText(top50Status, "Updated");
+        } else if (data && data.error) {
+          setText(top50Status, "Snapshot unavailable");
+        } else {
+          setText(top50Status, "No data");
+        }
+      } catch (e) {
+        setText(top50Status, "Error");
+      }
+    }
+
+    async function loadLatest() {
+      try {
+        setText(latestStatus, "Loading");
+        const data = await fetchJSON(ENDPOINTS.latest);
+        if (Array.isArray(data) && data.length > 0) {
+          latestData = data;
+          renderLatest();
+          setText(latestStatus, "Updated");
+        } else if (data && data.error) {
+          setText(latestStatus, "Snapshot unavailable");
+        } else {
+          setText(latestStatus, "No data");
+        }
+      } catch (e) {
+        setText(latestStatus, "Error");
+      }
+    }
+
+    async function loadTopVoted() {
+      try {
+        if (communityContainer) communityContainer.setAttribute("aria-busy", "true");
+        const data = await fetchJSON(ENDPOINTS.topVoted);
+        if (Array.isArray(data)) {
+          renderCommunity(data);
+        } else {
+          renderCommunity([]);
+        }
+      } catch (e) {
+        renderCommunity([]);
+      }
+    }
+
+    async function loadNews() {
+      try {
+        if (newsContainer) newsContainer.setAttribute("aria-busy", "true");
+        const data = await fetchJSON(ENDPOINTS.news);
+        if (data && Array.isArray(data.items)) {
+          renderNews(data.items);
+        } else {
+          renderNews([]);
+        }
+      } catch (e) {
+        renderNews([]);
+      }
+    }
+
+    async function sendVote(listName, index) {
+      let track;
+      if (listName === "top") {
+        track = top50Data[index];
+      } else if (listName === "latest") {
+        track = latestData[index];
+      }
+      if (!track || !track.url) return;
+      try {
+        await fetchJSON(ENDPOINTS.vote, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            url: track.url,
+            title: track.title || "",
+            artist: track.artist || "",
+            genre: track.genre || ""
+          })
+        });
+        loadTopVoted();
+      } catch (e) {
+      }
+    }
+
+    function wireVoteButtons() {
+      const buttons = document.querySelectorAll(".vote-btn");
+      buttons.forEach(function (btn) {
+        if (btn.dataset.wired === "1") return;
+        btn.dataset.wired = "1";
+        btn.addEventListener("click", function () {
+          const listName = btn.getAttribute("data-list");
+          const index = Number(btn.getAttribute("data-index") || "0");
+          btn.disabled = true;
+          btn.classList.add("opacity-70");
+          sendVote(listName, index).finally(function () {
+            setTimeout(function () {
+              btn.disabled = false;
+              btn.classList.remove("opacity-70");
+            }, 800);
+          });
+        });
       });
-
-      t++;
-      requestAnimationFrame(draw);
-    }
-    draw();
-  }
-
-  document.addEventListener("DOMContentLoaded", function () {
-    initGenreFilter();
-    initAds();
-    initWaves();
-
-    const btnRefresh = document.getElementById("btn-refresh");
-    if (btnRefresh) {
-      btnRefresh.addEventListener("click", fetchSnapshot);
     }
 
-    fetchSnapshot();
-  });
+    const filterButtons = document.querySelectorAll(".genre-filter-btn");
+    filterButtons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        const filter = btn.getAttribute("data-genre-filter") || "all";
+        currentGenreFilter = filter;
+        filterButtons.forEach(function (b) {
+          b.classList.remove("bg-emerald-500", "text-slate-950");
+          b.classList.add("bg-slate-950/80", "border-slate-700/80", "text-slate-100");
+        });
+        btn.classList.remove("bg-slate-950/80", "text-slate-100");
+        btn.classList.add("bg-emerald-500", "text-slate-950");
+        renderTop50();
+      });
+    });
+
+    const canvas = document.getElementById("bg-canvas");
+    if (canvas && canvas.getContext) {
+      const ctx = canvas.getContext("2d");
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener("resize", resize);
+      let t = 0;
+      function draw() {
+        if (!ctx) return;
+        const w = canvas.width;
+        const h = canvas.height;
+        ctx.clearRect(0, 0, w, h);
+        ctx.lineWidth = 1.1;
+        const layers = [
+          { color: "rgba(34,197,94,0.45)", amp: 30, speed: 0.0019 },
+          { color: "rgba(56,189,248,0.42)", amp: 42, speed: 0.0013 },
+          { color: "rgba(244,114,182,0.36)", amp: 54, speed: 0.001 }
+        ];
+        layers.forEach(function (g, i) {
+          ctx.beginPath();
+          ctx.strokeStyle = g.color;
+          const base = h * (0.3 + 0.18 * i);
+          for (let x = 0; x <= w; x += 10) {
+            const y = base +
+              Math.sin(x * 0.012 + t * g.speed * 260) * g.amp *
+              Math.cos(t * g.speed * 140 + i);
+            if (x === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+        });
+        t++;
+        requestAnimationFrame(draw);
+      }
+      draw();
+    }
+
+    if (btnRefreshTop) btnRefreshTop.addEventListener("click", loadTop50);
+    if (btnRefreshLatest) btnRefreshLatest.addEventListener("click", loadLatest);
+
+    loadSnapshot();
+    loadTop50();
+    loadLatest();
+    loadTopVoted();
+    loadNews();
+  })();
 </script>
-
 </body>
 </html>
